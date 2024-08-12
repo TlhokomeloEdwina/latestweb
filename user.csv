@@ -1,0 +1,17 @@
+id,id_number,first_name,last_name,gender,contact_number,email,password,image_url,expoDeviceToken,userType,active
+1,7801234567890,Alice,Smith,Female,0712345678,alice.smith@example.com,$2a$10$CrSNHX.bY6oKR/.F61GkZ.fxuOWvLUdlym.UJTrzs8VpDAvOFTRDu,NULL,,Admin,1
+2,8509876543210,John,Doe,Male,0723456789,john.doe@example.com,$2a$10$ACZsXUdOAX0B8z8jLquFhuW7wAclwkbtyDFDpUzJBqHHc/qnax2my,https://i.ibb.co/gwrhWsq/Admin-2.png,NULL,Admin,1
+3,9001234567890,Emily,Johnson,Female,0734567890,emily.johnson@example.com,$2a$10$Y1A2Wu4wuj/r4Pl7oHxGrus54ZZHh0sVokq5WNGWaRSYrcD9wlrqi,https://i.ibb.co/8cRPwx8/Caregiver-1.png,,Caregiver,1
+4,9109876543210,Michael,Brown,Male,0745678901,michael.brown@example.com,$2a$10$9B.4EelY0dljxet8p734huzvGDoCdmZiJyL1iQz2lRGUCxMoYjH4e,https://i.ibb.co/nzxKRqk/Caregiver-2.png,NULL,Caregiver,1
+5,9202468013579,Sophie,Miller,Female,0756789012,sophie.miller@example.com,$2a$10$jLJsP2LmYaSHJdyyU98b7.xqHFQ6GLQPf1i1lIIVAS0q0cGpg1QMS,https://i.ibb.co/4MPQ5Fq/Caregiver-3.png,ExponentPushToken[CJnaKHBbId3F8I78Jnoz0v],Caregiver,1
+6,6001234567890,Mary,Robinson,Female,0761234567,mary.robinson@example.com,$2a$10$VrnCesCwgx9xCGhBkD3T8ucf5ju4HUx2PDR0WVu8dothXp/pZdIuS,https://i.ibb.co/6YbH177/Resident-3.png,NULL,Resident,1
+7,6709876543210,James,Johnson,Male,0762345678,james.johnson@example.com,$2a$10$eKoxJfbBsbXmiihF7l7NY.iWNt3XsBa.wTqcjRygG1c3GM12d8f7q,https://i.ibb.co/sbvvVGr/Resident-1.png,NULL,Resident,1
+8,6902468013579,Evelyn,Williams,Female,0763456789,evelyn.williams@example.com,$2a$10$4gamw8Z9ysBwiB/0kZZGlOR0qetWG5AhymUo1ImX0pRUIap6o..ia,https://i.ibb.co/Hry9Vxx/Resident-4.png,NULL,Resident,1
+9,6101357924680,William,Smith,Male,0764567890,william.smith@example.com,$2a$10$XQLrMcD2x29GKxIwzicIgupgOP0KuNdy84Kz.mok7Wi1aO3.dLdJy,https://i.ibb.co/wKQCYxS/Resident-2.png,,Resident,1
+10,8001234567890,Sarah,Davis,Female,0781234567,sarah.davis@example.com,$2a$10$VhqawTn1Igp7ducDuktk0e1zvNeqnWYmYlZBXD.SIa.2g6MoBgIBS,https://i.ibb.co/RzdzfCD/Family-1.png,NULL,Family_Member,1
+11,8301357924680,Alex,Williams,Male,0784567890,alex.moore@example.com,$2a$10$SzHmmUxlUiy0hno7ezK1cub1oH2hPLWTbovOSynK2xkKx.HDbKhpe,https://i.ibb.co/qgf2xw9/Family-2.png,NULL,Family_Member,1
+12,0111115656011,melo,melo22,female,0670402296,melo1@gmail.com,$2a$10$PB1zfoBjxgwn45yEZdnv6.4hRxkXEuFLp5cGOE/g7nvNdZV7mQ6Gm,NULL,,Admin,1
+13,5213,jerry,hh,male,0825417000,jerry@example.com,$2a$10$KUDz9Zn0Wvr4DT3lu3ll9O/L6E.WKmFnl9z/ipGma6wKWUugDMiOm,,,Caregiver,1
+14,0212125887057,tom,smith,male,0670402987,tom123@gmail.com,$2a$10$mkROMa2gH7HQoqzXhaJDi.wuZLtpz8zrO4sr5PV.0eBs/dVV0fyf2,,,Caregiver,1
+15,0012125676099,ko,lo,male,0715656882,ko@example.com,$2a$10$V9a8vHiJ3DtrdGCbrFgQVucrXMgT4khMnZbcldNtZAxJaoyItd82W,,,Caregiver,1
+16,0111115656077,sk,kk,male,0670401288,k@example.cpm,$2a$10$OuR425cAmR2a8FetufN.X.49dADnMGis4py2UuHivN8u9O2BRly0K,,,Caregiver,1

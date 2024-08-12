@@ -1,0 +1,54 @@
+[33mcommit a2603e5870e5dbb563efc103fc763432663fbdf7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: Sonwabile_Shumane <89164763+S00s00@users.noreply.github.com>
+Date:   Sun Apr 21 17:44:56 2024 +0200
+
+    Create userController.js inside controller folder
+
+[33mcommit 9c9cc16164b5454aa210b8d32e298b062b9caa42[m
+Author: Ntando-Machi <ntandomachi17@gmail.com>
+Date:   Sun Apr 21 15:18:24 2024 +0200
+
+    I added a gitignore file and also created a basic server that needs the necessary functions
+
+[33mcommit c3a0aad2d8b406f3396dcce61ab878e98935b323[m
+Merge: 7bdf5de 3391dbe
+Author: Ntando-Machi <ntandomachi17@gmail.com>
+Date:   Sun Apr 21 15:01:28 2024 +0200
+
+    Merge branch 'dev' of https://github.com/IFMTYP2024/team12-main into dev
+
+[33mcommit 7bdf5deff75078dcdd5b1e6e807f8faeb0db5477[m
+Author: Ntando-Machi <ntandomachi17@gmail.com>
+Date:   Sun Apr 21 15:00:08 2024 +0200
+
+    Added a new User model file
+
+[33mcommit 3391dbe46d9902997e851228469c2559fd25206e[m
+Author: Sonwabile_Shumane <89164763+S00s00@users.noreply.github.com>
+Date:   Sun Apr 21 14:59:11 2024 +0200
+
+    Create server.js
+
+[33mcommit c9fce77c91d890983004f88eb81b87501158daf9[m[33m ([m[1;31morigin/dev[m[33m)[m
+Author: Sonwabile_Shumane <89164763+S00s00@users.noreply.github.com>
+Date:   Mon Apr 8 19:05:34 2024 +0200
+
+    Create README.md
+
+[33mcommit bfec4c2c133e52a24b69cea84d685ea2e2c0cc2a[m
+Author: Sonwabile_Shumane <89164763+S00s00@users.noreply.github.com>
+Date:   Mon Apr 8 18:27:06 2024 +0200
+
+    Create README.md
+
+[33mcommit 5c97e74df7a013835a5d140d1cd767711f8ce3e7[m
+Author: Sonwabile_Shumane <89164763+S00s00@users.noreply.github.com>
+Date:   Mon Apr 8 18:25:14 2024 +0200
+
+    Create README.md
+
+[33mcommit 0a0e69aa0eb3c85d4b54ed3ae257815ced881cf1[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Carl van der Westhuizen <cvanderwesthuizen@uj.ac.za>
+Date:   Wed Mar 13 03:57:07 2024 +0200
+
+    Initial commit

@@ -1,0 +1,10 @@
+id,mood_type,question,options,question_type
+1,social,"How often do you meet with friends?","["Daily", "Weekly", "Monthly"]",choice
+2,social,"Do you feel comfortable in social gatherings?","["Yes", "No"]",yes_no
+3,social,"How would you rate your current social life?","["happy", "morb", "sad"]",scale
+4,mental,"How often do you feel stressed?","["Never", "Sometimes", "Often"]",choice
+5,mental,"Do you feel you have a healthy work-life balance?","["Yes", "No"]",yes_no
+6,mental,"How would you rate your mental health?","["happy", "morb", "sad"]",scale
+7,physical,"change to physical","["yes", "no"]",yes_no
+8,physical,"Do you feel physically healthy?","["Yes", "No"]",yes_no
+9,physical,"How would you rate your physical fitness?","["happy", "morb", "sad"]",scale

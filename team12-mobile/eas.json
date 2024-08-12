@@ -1,0 +1,38 @@
+{
+  "cli": {
+    "version": ">= 10.2.1"
+  },
+  "build": {
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview2": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      }
+    },
+    "preview3": {
+      "developmentClient": true
+    },
+    "preview4": {
+      "distribution": "internal"
+    },
+    "production": {
+      "env": {
+        "IP_ADDRESS": "192.168.1.107",
+        "PROJECT_ID": "0260c275-63f3-4177-91b9-b8b7d2d9a998"
+      }
+    },
+    "test": {
+      "env": {
+        "IP_ADDRESS": "192.168.1.107",
+        "PROJECT_ID": "0260c275-63f3-4177-91b9-b8b7d2d9a998"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
