@@ -26,7 +26,7 @@ const GeneralTasks = () => {
       console.error(error);
     }
   };
-  //this
+  //this manual
 
   useEffect(() => getData, []);
 
