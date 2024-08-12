@@ -17,6 +17,16 @@ const GeneralTasks = () => {
     }
   };
 
+  const getTasks = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/general-activities");
+      const activities = await response.json();
+      setActivity(activities);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => getData, []);
 
   return (
