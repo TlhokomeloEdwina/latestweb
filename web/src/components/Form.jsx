@@ -435,7 +435,7 @@ const UserForm = ({ user, onSubmit, onClose }) => {
     );
   } else {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 ">
         <div className="bg-white p-6 rounded-md shadow-md w-full max-w-3xl h-5/6 overflow-y-auto">
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
@@ -598,7 +598,7 @@ const UserForm = ({ user, onSubmit, onClose }) => {
                     alt="Profile Preview"
                     className="w-32 h-32 object-cover rounded-full"
                   />
-                  <p className="font-serif text-blue-500">{formData.image_url}</p>
+                  {/* <p className="font-serif text-blue-500">{formData.image_url}</p> */}
                 </div>
               )}
             </div>
@@ -731,13 +731,13 @@ const UserForm = ({ user, onSubmit, onClose }) => {
               <button
                 type="button"
                 onClick={onClose}
-                className="mr-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                className="mr-2 inline-flex items-center px-4 py-2 border text-lg font-medium rounded-md  text-white bg-[#0b4dad]  hover:bg-blue-500 font-serif"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center px-4 py-2 border text-lg font-medium rounded-md text-white bg-[#0b4dad]  hover:bg-blue-500 font-serif"
               >
                 {confirmSubmit ? "Confirm Edit" : "Edit"}
               </button>

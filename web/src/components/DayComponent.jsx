@@ -24,22 +24,22 @@ const DayComponent = ({ date, handleClick }) => {
     }, [date])
 
     //${date.getDate()}${date.getMonth()}${date.getFullDate()}
-    
+
     const getEvent = async () => {
-    try {
-        const isoDate = date.toISOString(); // ISO string format
-        const response = await axios.get(`http://${process.env.REACT_APP_IP_ADDRESS}:3000/event/${encodeURIComponent(isoDate)}`);
-        setEvent(response.data);
-        console.log("Response", response.data);
-    } catch (error) {
-        console.error(error);
+        try {
+            const isoDate = date.toISOString(); // ISO string format
+            const response = await axios.get(`http://${process.env.REACT_APP_IP_ADDRESS}:3000/event/${encodeURIComponent(isoDate)}`);
+            setEvent(response.data);
+            console.log("Response", response.data);
+        } catch (error) {
+            console.error(error);
         }
 
     };
-    
+
     // Define click handlers
     const handleClickEventToday = () => handleClick(date, event);
-    const handleClickPastDate = () => {};
+    const handleClickPastDate = () => { };
     const handleClickFutureDate = () => handleClick(date);
 
     // Determine onClick handler based on conditions
@@ -54,7 +54,7 @@ const DayComponent = ({ date, handleClick }) => {
             onClick={determineClickHandler()}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="w-24 relative h-20 flex hover:bg-slate-200 p-1 justify-between rounded-md border-2 border-white">
+            className="w-36 relative h-24 flex shadow-md rounded-lg hover:bg-blue-100 p-1 justify-between border-4 border-white">
             <div className="flex w-fit h-fit flex-col justify-start">
                 <h1 className="font-bold">{`${strDayOfMonth}`}</h1>
                 <p className="font-bold">{months[date.getMonth()]}</p>
@@ -65,17 +65,17 @@ const DayComponent = ({ date, handleClick }) => {
             {(new Date(date) - new Date() <= 0) &&
                 <FontAwesomeIcon
                     icon={faCalendarMinus}
-                size="lg"
-                className="text-slate-50"
+                    size="lg"
+                    className="text-[#0b4dad]"
                 />}
             {!isEventToday && !(new Date(date) - new Date() <= 0) &&
                 <FontAwesomeIcon
                     icon={faCalendarPlus}
-                size="lg"
-                className="text-slate-50"
+                    size="lg"
+                    className="text-[#0b4dad]"
                 />
             }
-             {hovered && event && (
+            {hovered && event && (
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 p-2 bg-white border border-gray-300 rounded-lg shadow-lg w-48 z-50">
                     <h2 className="font-bold text-sm">{event.name}</h2>
                     <p className="text-xs">{event.description}</p>
@@ -83,6 +83,6 @@ const DayComponent = ({ date, handleClick }) => {
             )}
         </button>
     )
-} 
+}
 
 export default DayComponent;

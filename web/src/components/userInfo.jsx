@@ -42,7 +42,7 @@ const UserInfo = ({ user, onLinkedUserClick, onEdit, onDelete, onBack }) => {
           <button
             onClick={onBack}
             className="px-6 py-2 bg-[#0b4dad] text-white rounded font-serif
-            hover:bg-red-500"
+            hover:bg-blue-500"
           >
             Cancel
           </button>
@@ -69,7 +69,9 @@ const UserInfo = ({ user, onLinkedUserClick, onEdit, onDelete, onBack }) => {
           <strong className="font-serif ">Email:</strong> {user.email}
         </p>
         <p className="mt-2 text-lg">
-          <strong className="font-serif ">User Type:</strong> {user.userType}
+          <strong className="font-serif ">User Type: </strong>
+          {/* MELO-REMOVED THE "-" IN FAMILY_MEMBER  */}
+          {user.userType === 'Family_Member' ? 'Family Member' : user.userType}
         </p>
 
       </div>

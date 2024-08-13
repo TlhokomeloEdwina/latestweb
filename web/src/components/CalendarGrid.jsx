@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DayComponent from "./DayComponent";
 
-const CalendarGrid = ({handleClick}) => {
+const CalendarGrid = ({ handleClick }) => {
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const dates = [];
     const startDate = new Date();
@@ -14,15 +14,15 @@ const CalendarGrid = ({handleClick}) => {
         dates.push(date);
     }
 
-    return (  
+    return (
 
-            <div className="grid w-full grid-cols-7 gap-y-2">
-               {daysOfWeek.map((day) => (<h1 className="font-bold">{day}</h1>))} 
-            {             
+        <div className="grid w-full grid-cols-7 gap-y-2  text-[#0b4dad] font-serif">
+            {daysOfWeek.map((day) => (<h1 className="font-bold text-xl  ">{day}</h1>))}
+            {
                 dates.map((dat) => (
                     <DayComponent key={dat.getTime()} date={dat} handleClick={handleClick} />
                 ))}
-            </div>
+        </div>
 
     );
 };

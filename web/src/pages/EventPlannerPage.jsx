@@ -20,18 +20,18 @@ const EventPlannerPage = () => {
   const [activity, setActivity] = useState();
 
   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  
-  
+
+
 
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [currentEvent, setCurrentEvent] = useState();
 
   const handleCreateEvent = () => {
-    
+
   }
 
   const handleGeneralTasks = () => {
-    
+
   }
 
   useEffect(() => {
@@ -42,12 +42,12 @@ const EventPlannerPage = () => {
   useEffect(() => {
     populateLocalEvents(events);
   }, [events])
-  
+
   useEffect(() => {
     sortEvents(localEvents);
     console.log("Current: ", currentEvent);
-    console.log("Upcoming",upcomingEvents)
-  },[localEvents])
+    console.log("Upcoming", upcomingEvents)
+  }, [localEvents])
 
   useEffect(() => {
     const activities = [];
@@ -89,7 +89,7 @@ const EventPlannerPage = () => {
       if (event.daysLeft > 0 && event.daysLeft < 11) {
         if (upcoming.length < 2) {
           upcoming.push(event);
-        }       
+        }
       } else if (event.daysLeft === 0) {
         setCurrentEvent(event);
       }
@@ -124,29 +124,29 @@ const EventPlannerPage = () => {
 
 
     setLocalEvents(updatedLocalEvents);
-    
-    
-    };
 
 
-    if (loading) {
-      return <div className="absolute flex items-center justify-center">Loading...</div>;
-    }
+  };
 
-    return (
-      <div className="h-screen bg-gradient-to-r from-[rgb(135,206,250)] to-[rgb(100,149,237)] p-5">
-        <EventPlannerHeader createEvent={handleCreateEvent} generalTasks={handleGeneralTasks} />
-        <h1 className="text-2xl font-bold mt-4">{`${days[new Date().getDay()]} Activities`}</h1>
-      
-        <SlideShow>
-          {dayActivity && dayActivity.length > 0 ?
-          
-                dayActivity.map((act) => <EventActivity key={act.id} activities={act} setActivity={setActivity} />) : <h1 className="font-bold mt-10">No activities today</h1>
-              }
-        </SlideShow>
-              
-        
-        {/* {!loading && <EventPlanner>
+
+  if (loading) {
+    return <div className="absolute flex items-center justify-center">Loading...</div>;
+  }
+
+  return (
+    <div className="h-screen-min bg-zinc-100 p-5">
+      <EventPlannerHeader createEvent={handleCreateEvent} generalTasks={handleGeneralTasks} />
+      <h1 className="text-2xl font-bold mt-4">{`${days[new Date().getDay()]} Activities`}</h1>
+
+      <SlideShow>
+        {dayActivity && dayActivity.length > 0 ?
+
+          dayActivity.map((act) => <EventActivity key={act.id} activities={act} setActivity={setActivity} />) : <h1 className="font-bold mt-10">No activities today</h1>
+        }
+      </SlideShow>
+
+
+      {/* {!loading && <EventPlanner>
           <div className="h-full w-full">
           {currentEvent && 
             <EventSection>
@@ -170,12 +170,13 @@ const EventPlannerPage = () => {
             </div>
         </EventPlanner>} */}
 
-
-        <CalendarGrid handleClick={handleDayClick}/>
+      <div className="h-screen bg-zinc-100 shadow-2xl rounded-lg p-5">
+        <CalendarGrid handleClick={handleDayClick} />
         {showModal && <EventModal eventEdit={eventEdit} date={date} setShowModal={setShowModal} />}
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default EventPlannerPage;
 

@@ -38,9 +38,8 @@ const App = () => {
             <div className="flex">
               <Sidebar onToggleSidebar={handleToggleSidebar} />
               <div
-                className={`flex-grow  min-h-screen p-3 ml-2 bg-zinc-100 transition-all duration-300 ${
-                  isCollapsed ? "ml-[57px]" : "ml-[235px]"
-                }`}
+                className={`flex-grow  min-h-screen p-3 ml-2 bg-zinc-100 transition-all duration-300 ${isCollapsed ? "ml-[57px]" : "ml-[235px]"
+                  }`}
               >
                 <Routes>
                   <Route path="/home" element={<Home />} />
