@@ -102,6 +102,8 @@ class Checkin {
     });
   }
 
+
+
   //to get 1 checkin for that specific day (if done)
   static async getResidentDailyCheckin(id) {
     let query = `with checkins as (select c.id as checkin_id, sum(r.score) as totalscore,u.first_name as first_name, u.last_name as last_name,u.image_url as image_url,c.datecreated as date from responses r join checkin c on r.checkin_id = c.id join user u on c.resident_id = u.id where c.resident_id = ? group by c.id)select row_number() over (order by date) as id,first_name,last_name,image_url,checkin_id,totalscore,date from checkins order by date desc limit 1`;

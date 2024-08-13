@@ -102,7 +102,7 @@ app.get("/caregiverCheckins/:userId", checkinController.getCaregiverCheckins);
 app.get("/ResidentDailyCheckin/:id", checkinController.getResidentDailyCheckin);
 
 //questions
-//app.post("/question",questionController.addQuestion); removed this option will explain why
+//app.post("/question",questionController.addQuestion);
 app.post("/addquestion", questionController.addQuestion);
 app.delete("/deletequestion/:questionId", questionController.deleteQuestion);
 app.get("/questions", questionController.getQuestions);
