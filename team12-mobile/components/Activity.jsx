@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 
-const formatTime = (time) => {
-  let [hour, minute, second] = time.split(":");
+const formatTime = (start_time) => {
+  let [hour, minute, second] = start_time.split(":");
   let period = "AM";
 
   hour = parseInt(hour);
@@ -17,7 +17,7 @@ const formatTime = (time) => {
 
 const Activity = ({ activity }) => {
   console.log("This is the activity: ", activity);
-  const formattedTime = formatTime(activity.time);
+  const formattedTime = formatTime(activity.start_time);
   return (
     <View className="w-11/12 flex flex-row justify-between p-2">
       <Text className="font-bold">{activity.name}</Text>

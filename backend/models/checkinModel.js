@@ -101,8 +101,39 @@ class Checkin {
       );
     });
   }
-
-
+  //13/08/2024
+  // get sleep pattern
+  static async getSleepPattern(userId) {
+    return new Promise((resolve, reject) => {
+      db.query(
+        "select r.score from responses r join checkin c on r.checkin_id = c.id  where question_id = 1 and c.resident_id = ? order by c.datecreated desc limit 7;",
+        [userId],
+        (err, results) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve(results);
+        }
+      );
+    });
+  }
+  // get energy pattern
+  static async getEnergyPattern(userId) {
+    return new Promise((resolve, reject) => {
+      db.query(
+        "select r.score from responses r join checkin c on r.checkin_id = c.id  where question_id = 3 and c.resident_id = ? order by c.datecreated desc limit 7;",
+        [userId],
+        (err, results) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve(results);
+        }
+      );
+    });
+  }
 
   //to get 1 checkin for that specific day (if done)
   static async getResidentDailyCheckin(id) {

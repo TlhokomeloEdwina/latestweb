@@ -130,18 +130,18 @@ const EventPlannerPage = () => {
 
 
   if (loading) {
-    return <div className="absolute flex items-center justify-center">Loading...</div>;
+    return <div className="font-bold font-serif text-center text-3xl">Loading...</div>;
   }
 
   return (
     <div className="h-screen-min bg-zinc-100 p-5">
       <EventPlannerHeader createEvent={handleCreateEvent} generalTasks={handleGeneralTasks} />
-      <h1 className="text-2xl font-bold mt-4">{`${days[new Date().getDay()]} Activities`}</h1>
+      <h1 className="text-2xl font-bold mt-4 font-serif">{`${days[new Date().getDay()]} Activities`}:</h1>
 
       <SlideShow>
         {dayActivity && dayActivity.length > 0 ?
 
-          dayActivity.map((act) => <EventActivity key={act.id} activities={act} setActivity={setActivity} />) : <h1 className="font-bold mt-10">No activities today</h1>
+          dayActivity.map((act) => <EventActivity key={act.id} activities={act} setActivity={setActivity} />) : <h1 className="font-bold font-serif text-center text-3xl">No activities today</h1>
         }
       </SlideShow>
 

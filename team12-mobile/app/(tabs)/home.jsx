@@ -247,7 +247,7 @@ const Home = () => {
     if (newUser?.userType !== "Family_Member") {
       if (activity.length > 0) {
         activity.forEach((act) => {
-          const [hours, minutes, seconds] = act.time.split(":").map(Number);
+          const [hours, minutes, seconds] = act.start_time.split(":").map(Number);
 
           const adjustedHours = hours;
           const adjustedMinutes = minutes;
@@ -350,9 +350,9 @@ const Home = () => {
   useEffect(() => {
     return sound
       ? () => {
-          console.log("Unloading Sound");
-          sound.unloadAsync();
-        }
+        console.log("Unloading Sound");
+        sound.unloadAsync();
+      }
       : undefined;
   }, [sound]);
 

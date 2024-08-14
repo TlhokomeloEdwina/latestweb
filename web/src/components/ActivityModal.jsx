@@ -163,12 +163,12 @@ const ActivityModal = ({
   };
 
   return (
-    <div className="absolute flex items-center justify-center w-screen h-screen left-0 top-0 bg-black bg-opacity-35">
-      <div className="w-2/3 h-fit py-10 flex flex-col justify-center items-center rounded-md bg-sky-100 shadow-sm shadow-slate-500">
-        <h1 className="font-serif text-2xl pb-5 font-bold text-black">
-          {mode} activity
+    <div className="absolute flex items-center justify-center w-screen h-screen left-0 top-0 bg-black bg-opacity-35 ">
+      <div className="w-3/4 h-fit py-10 flex flex-col justify-center items-center rounded-md bg-white shadow-sm shadow-slate-500">
+        <h1 className="font-serif text-2xl pb-5 font-bold text-[#0b4dad]">
+          {mode} Activity
         </h1>
-        <form className="flex flex-col text-slate-500 justify-center items-center w-full" onSubmit={handleFormSubmit}>
+        <form className="flex flex-col justify-center items-center w-full" onSubmit={handleFormSubmit}>
           <div className="flex w-full justify-center">
             <div className="w-1/2 flex-col items-center">
               <div className="w-full my-4">
@@ -205,11 +205,11 @@ const ActivityModal = ({
               </div>
               <div className="flex justify-between my-4">
                 <div>
-                  <label className="font-bold text-slate-500 text-sm" htmlFor="stime">
+                  <label className="font-bold text-slate-500 mb-2 font-serif text-base" htmlFor="stime">
                     From:
                   </label>
                   <input
-                    className="p-2 font-bold text-black ms-1 border-2 h-8 rounded-md border-slate-300 focus:border-cyan-200 outline-none focus:ring-1 focus:ring-cyan-200"
+                    className="p-2 font-bold text-black ms-1 border-2 h-8 rounded-md border-slate-300 focus:border-blue-200 outline-none focus:ring-1 focus:ring-blue-200"
                     type="time"
                     required
                     name="start_time"
@@ -219,11 +219,11 @@ const ActivityModal = ({
                   />
                 </div>
                 <div>
-                  <label className="font-bold text-slate-500 text-sm" htmlFor="etime">
+                  <label className="font-bold text-slate-500  mb-2 font-serif text-base" htmlFor="etime">
                     To:
                   </label>
                   <input
-                    className="p-2 font-bold text-black ms-1 border-2 h-8 rounded-md border-slate-300 focus:border-cyan-200 outline-none focus:ring-1 focus:ring-cyan-200"
+                    className="p-2 font-bold text-black ms-1 border-2 h-8 rounded-md border-slate-300 focus:border-blue-200 outline-none focus:ring-1 focus:ring-blue-200"
                     type="time"
                     required
                     name="end_time"
@@ -249,42 +249,42 @@ const ActivityModal = ({
                 />
               </div>
             </div>
-            <div className="p-2">
-              <p className="mt-3 mb-1 font-bold">Days</p>
-              <div className="flex justify-center">
+            <div className="p-2 ">
+              <p className="mt-3 mb-1 font-serif  text-lg">Days:</p>
+              <div className="flex justify-center text-[#0b4dad]">
                 <div className="w-full flex flex-col">
-                  <label className="flex items-center">
+                  <label className="flex items-center text-lg">
                     <input
                       type="checkbox"
                       name="weekdays"
                       checked={data.predefinedSelection.weekdays}
                       onChange={handlePredefinedChange}
                     />
-                    <span className="ml-2">Weekdays</span>
+                    <span className="ml-2 font-serif ">Weekdays</span>
                   </label>
-                  <label className="flex items-center mt-2">
+                  <label className="flex items-center mt-2 text-lg">
                     <input
                       type="checkbox"
                       name="weekend"
                       checked={data.predefinedSelection.weekend}
                       onChange={handlePredefinedChange}
                     />
-                    <span className="ml-2">Weekend</span>
+                    <span className="ml-2 font-serif">Weekend</span>
                   </label>
-                  <label className="flex items-center mt-2">
+                  <label className="flex items-center mt-2 font-serif">
                     <input
                       type="checkbox"
                       name="fullWeek"
                       checked={data.predefinedSelection.fullWeek}
                       onChange={handlePredefinedChange}
                     />
-                    <span className="ml-2">Full Week</span>
+                    <span className="ml-2 text-lg">Full Week</span>
                   </label>
                 </div>
                 <div>
                   {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map((day, index) => (
-                    <div key={index} className="flex items-center justify-end w-full">
-                      <label className="block mb-2 font-serif text-lg" htmlFor={`day-${index + 1}`}>
+                    <div key={index} className="flex items-center justify-end w-full ml-2">
+                      <label className="block mb-2 font-serif text-base" htmlFor={`day-${index + 1}`}>
                         {day}
                       </label>
                       <input
@@ -309,12 +309,13 @@ const ActivityModal = ({
           <div className="w-full flex justify-around mt-4">
             <CustomButton
               title="Submit"
-              styles="w-1/3 hover:bg-blue-300 hover:border-blue-300"
+              styles="w-1/3 hover:bg-[#0b4dad] hover:text-white hover:border-transparent shadow text-[#0b4dad]"
               handlePress={handleFormSubmit}
             />
             <CustomButton
               title="Cancel"
-              styles="w-1/3 text-black hover:text-white hover:bg-red-300"
+              styles="w-1/3 hover:bg-[#0b4dad] hover:text-white hover:border-transparent shadow text-[#0b4dad]
+              "
               handlePress={() => {
                 setShowModal(false);
               }}

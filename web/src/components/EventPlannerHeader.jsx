@@ -4,20 +4,21 @@ import { Link } from "react-router-dom";
 
 const EventPlannerHeader = ({ setShowModal }) => {
   return (
-    <div className="bg-slate-300 flex justify-between p-4 shadow-md shadow-slate-300 font-sans rounded-md -mt-2">
-      <h1 className="font-serif text-black text-3xl font-bold leading-10">
+    <div className="bg-zinc-100 flex justify-between p-4 shadow-md shadow-slate-300 font-sans rounded-md -mt-2">
+      <h1 className="font-serif text-[#0b4dad] text-3xl font-bold leading-10">
         Event Planner
       </h1>
       <div>
         <CustomButton
-            title="Add New Weekly Activity"
-            handlePress={() => setShowModal(true)}
-            styles="text-sm ml-16 hover:bg-zinc-300 hover:border-zinc-300"
-      />
+          title="Add New Weekly Activity"
+          handlePress={() => setShowModal(true)}
+          styles="bg-white text-[#0b4dad] mx-1 shadow border-2 hover:bg-[#0b4dad]
+          hover:text-white border-transparent p-3 rounded-lg font-bold h-12 text-lg"
+        />
         <Link
           to="/schedule"
-          className="uppercase bg-transparent text-black mx-1 shadow border-2 hover:bg-gray-300
-          hover:text-black border-black-400 p-3 rounded-lg font-bold h-10"
+          className=" font-serif bg-white text-[#0b4dad] mx-1 shadow border-2 hover:bg-[#0b4dad]
+          hover:text-white border-transparent p-3 rounded-lg font-bold h-10 text-lg"
         >
           Weekly Schedule
         </Link>

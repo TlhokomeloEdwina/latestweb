@@ -22,7 +22,7 @@ const CreateEvent = ({ eventEdit, date }) => {
 
 
   const postEvent = async () => {
-    
+
     const response = await axios.post(
       `http://${process.env.REACT_APP_IP_ADDRESS}:3000/${eventEdit ? "eventEdit" : "event"
       }`,

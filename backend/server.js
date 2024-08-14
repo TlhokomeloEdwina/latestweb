@@ -101,6 +101,9 @@ app.get("/checkinmoods/:checkinId", checkinController.getCheckinmoods);
 app.get("/caregiverCheckins/:userId", checkinController.getCaregiverCheckins);
 app.get("/ResidentDailyCheckin/:id", checkinController.getResidentDailyCheckin);
 
+app.get("/sleepPattern/:userId", checkinController.getSleepPattern);
+app.get("/energyLevels/:userId", checkinController.getEnergyPattern);
+
 //questions
 //app.post("/question",questionController.addQuestion);
 app.post("/addquestion", questionController.addQuestion);

@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { IP_ADDRESS } from "@env";
-import { Text, TouchableOpacity, FlatList, View, Image } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  FlatList,
+  View,
+  Image,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
 import { userObject } from "./(auth)/Sign-in";
@@ -16,6 +22,7 @@ const viewCheckin = () => {
   const [checkinmoods, setCheckinmoods] = useState([]);
   const [checkinreview, setCheckinreview] = useState(null);
   const [isLoading, setLoading] = useState(true);
+
 
   const navigation = useNavigation();
   const route = useRoute();
@@ -38,20 +45,15 @@ const viewCheckin = () => {
         `http://${IP_ADDRESS}:3000/checkinbyresident/${id}`
       );
 
-      console.log("Checkin made by resident: ", checkinResponse.data.checkins);
-
       if (checkinResponse.data.checkins) {
         console.log("checkinResponse:", checkinResponse.data.checkins);
         setResidentCheckins(checkinResponse.data.checkins);
         if (checkinResponse.data.checkins.length > 0) {
-          for (
-            let index = 0;
-            index < checkinResponse.data.checkins.length;
-            index++
-          ) {
+          for (let index = 0; index < checkinResponse.data.checkins.length; index++) {
             getCheckinmoods(checkinResponse.data.checkins[index].checkin_id);
           }
         }
+
       }
 
       console.log("Done inputting checkins");
@@ -65,6 +67,7 @@ const viewCheckin = () => {
   };
   //resident checkins awaiting review
   const getCaregiverCheckins = async () => {
+
     try {
       console.log(newUser.id);
       console.log("this is the resident id: " + id);
@@ -72,9 +75,17 @@ const viewCheckin = () => {
         `http://${IP_ADDRESS}:3000/ResidentDailyCheckin/${id}`
       );
 
-      console.log("This is the checkin made by this user ", response.data);
+      console.log(
+        "This is the checkin made by this user ",
+        response.data
+      );
 
+      // if (response.data) {
       setCheckin(response.data.newCheckin[0]);
+      console.log("Set checkin: ", response.data.newCheckin[0]);
+      //   } else {
+      //console.log(checkins, "no checkins found");
+      // }
     } catch (error) {
       console.error("error occured when fetching checkins", error);
     } finally {
@@ -83,21 +94,20 @@ const viewCheckin = () => {
   };
   //moods
   const getCheckinmoods = async (checkin_id) => {
-    try {
-      const Moodresponse = await axios.get(
-        `http://${IP_ADDRESS}:3000/checkinmoods/${checkin_id}`
-      );
 
+    try {
+      const Moodresponse = await axios.get(`http://${IP_ADDRESS}:3000/checkinmoods/${checkin_id}`);
+      console.log("moods: " + Moodresponse.data.scores)
       if (Moodresponse.data) {
         setCheckinmoods(Moodresponse.data.scores);
       } else {
         setCheckinmoods([]);
       }
     } catch (error) {
-      console.error("error occured fetching mood scores");
+      console.error("error occured fetching mood scores")
     }
-  };
-  // format date
+  }
+  // format date 
   function formatDate(isoDateString) {
     const originalTime = new Date(isoDateString);
     const day = originalTime.getDate();
@@ -121,7 +131,8 @@ const viewCheckin = () => {
     if (newUser?.userType === "Caregiver" && checkin) {
       getCheckinmoods(checkin.checkin_id);
     }
-  }, [checkin]);
+  }, [checkin])
+
 
   useEffect(() => {
     if (newUser?.userType === "Family_Member") {
@@ -129,31 +140,34 @@ const viewCheckin = () => {
     }
   }, [newUser?.userType]);
 
-  // back to previous page
+
+  // back to previous page 
   const handleBackButton = () => {
     navigation.goBack();
   };
 
-  //set checkin mood scores
+  //set checkin mood scores 
   const renderMoods = (checkinmoods) => {
+
     const setColour = (score) => {
-      if (score < 2) {
-        return "bg-red-400";
-      } else if (score == 2) {
-        return "bg-orange-400";
-      } else if (score > 2) {
-        return "bg-green-400";
+      if (score < 4) {
+        return "bg-red-400"
+      } else if (score >= 4 && score < 7) {
+        return "bg-orange-400"
+      } else if (score > 7) {
+        return "bg-green-400"
       }
     };
     const setText = (score) => {
-      if (score < 2) {
-        return "UNHEALTHY";
-      } else if (score == 2) {
-        return "MODERATE";
-      } else if (score > 2) {
-        return "HEALTHY";
+
+      if (score < 4) {
+        return 'UNHEALTHY';
+      } else if (score >= 4 && score < 7) {
+        return 'MODERATE'
+      } else if (score > 7) {
+        return 'HEALTHY';
       }
-    };
+    }
 
     return (
       <View className="p-4">
@@ -167,8 +181,8 @@ const viewCheckin = () => {
           </View>
         ))}
       </View>
-    );
-  };
+    )
+  }
 
   // useEffect(() => {
 
@@ -187,6 +201,7 @@ const viewCheckin = () => {
             <View>
               {renderMoods(checkinmoods)}
               {checkinreview ? (
+
                 <Text className="text-[18px] font-pbold mb-[5px]">
                   Note: {item.review}
                 </Text>
@@ -201,15 +216,11 @@ const viewCheckin = () => {
             </View>
           </View>
         </TouchableOpacity>
+
       </View>
     );
   };
 
-  const getInitials = (name) => {
-    const names = name.split(" ");
-    const initials = names.map((n) => n[0]).join("");
-    return initials.toUpperCase();
-  };
 
   if (isLoading)
     return (
@@ -221,6 +232,7 @@ const viewCheckin = () => {
   // screen to render if caregiver is logged in
   if (newUser.userType === "Caregiver" && isLoading === false) {
     return (
+
       <SafeAreaView className="flex-1 bg-[#fafbfb]">
         <View className="flex-row items-center justify-center pt-6 mb-6 px-4">
           <TouchableOpacity
@@ -233,52 +245,48 @@ const viewCheckin = () => {
             Carewise
           </Text>
         </View>
-
-        <View className="flex-row items-center justify-center mb-3">
-          {checkin.image_url ? (
-            <View className="flex flex-row">
+        {checkin ? (
+          <>
+            <View className="flex-row items-center justify-center mb-3">
               <Image
                 source={{ uri: checkin.image_url }}
-                className="w-20 h-20 rounded-full object-cover"
+                className="w-[60px] h-[60px] rounded-[40px] mr-[10px]"
               />
-              <Text className="text-xl font-bold mt-6">
-                {" "}
-                {checkin.first_name}
-              </Text>
-              <Text className="text-xl font-bold mt-6">
-                {" "}
-                {checkin.last_name}
-              </Text>
-            </View>
-          ) : (
-            <View className="flex flex-row">
-              <View className="w-20 h-20 rounded-full flex items-center justify-center bg-gray-100">
-                <Text className="text-black text-2xl font-bold">
-                  {getInitials(`${checkin.first_name} ${checkin.last_name}`)}
+              <View >
+                <Text className="text-[18px] font-pbold mb-[5px]">
+                  {checkin.first_name} {checkin.last_name}
                 </Text>
               </View>
             </View>
-          )}
-          <View></View>
-        </View>
-        <View></View>
-        <TouchableOpacity
-          className="my-[10px] mx-[20px] bg-[#F0F0F0] p-[10px] border-slate-200 shadow-gray-400 border-b-8 shadow-md "
-          onPress={() => handlePress(checkin)}
-        >
-          <Text className="text-lg text-[#888] text-center">
-            Date:{formatDate(checkin.date)}
-          </Text>
-          <View className="flex-row items-center">
-            {renderMoods(checkinmoods)}
             <View></View>
+            <TouchableOpacity
+              className="my-[10px] mx-[20px] bg-[#F0F0F0] p-[10px] border-slate-200 shadow-gray-400 border-b-8 shadow-md "
+              onPress={() => handlePress(checkin)}
+            >
+              <Text className="text-lg text-[#888] text-center">
+                Date:{formatDate(checkin.date)}
+              </Text>
+              <View className="flex-row items-center">
+                {renderMoods(checkinmoods)}
+                <View>
+                </View>
+              </View>
+
+            </TouchableOpacity>
+          </>
+        ) : (
+          <View>
+            <Text className="text-black text-xl font-bold mt-2">
+              Resident wellbeing report not available
+            </Text>
           </View>
-        </TouchableOpacity>
+        )}
       </SafeAreaView>
     );
   }
 
   if (newUser.userType === "Family_Member" && isLoading === false) {
+
     return (
       <SafeAreaView className="flex-1 bg-[#fafbfb]">
         <View className="flex-row items-center justify-center pt-6 mb-6 px-4">

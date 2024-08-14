@@ -58,6 +58,28 @@ exports.getcheckins = async function (req, res) {
     res.status(500).json({ message: `Error fetching responses` });
   }
 };
+
+//get sleep pattern for resident
+exports.getSleepPattern = async function (req, res) {
+  const { userId } = req.params;
+  try {
+    const scores = await Checkin.getSleepPattern(userId);
+    res.status(200).json({ scores });
+  } catch (error) {
+    res.status(500).json({ message: `Error fetching sleep scores` });
+  }
+};
+//get energy pattern for resident
+exports.getEnergyPattern = async function (req, res) {
+  const { userId } = req.params;
+  try {
+    const scores = await Checkin.getEnergyPattern(userId);
+    res.status(200).json({ scores });
+  } catch (error) {
+    res.status(500).json({ message: `Error fetching energy scores` });
+  }
+};
+
 //returns checkin of specific resident
 exports.getcheckinbyId = async function (req, res) {
   const checkin_id = req.params.checkin_id;

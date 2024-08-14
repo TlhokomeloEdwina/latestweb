@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { useState, useEffect } from "react";
 
 // Define a custom tooltip component with Tailwind CSS classes
@@ -9,7 +9,9 @@ const CustomTooltip = ({ payload, label, active }) => {
   if (active && payload && payload.length) {
     return (
       <div className="">
-        <p className="text-white font-semibold text-xs">{`${payload[0].value.toFixed(1)}%`}</p>
+        <p className="text-white font-semibold text-xs">{`${payload[0].value.toFixed(
+          1
+        )}%`}</p>
       </div>
     );
   }
@@ -17,14 +19,15 @@ const CustomTooltip = ({ payload, label, active }) => {
   return null;
 };
 
-
 const ClickableBubble = ({ event }) => {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
     const getActivities = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/dayActivity/${event.id}`);
+        const response = await fetch(
+          `http://localhost:3000/dayActivity/${event.id}`
+        );
         const json = await response.json();
         setActivities(json);
       } catch (error) {
@@ -38,12 +41,12 @@ const ClickableBubble = ({ event }) => {
   const typeCounts = {
     Exercise: 0,
     Socialize: 0,
-    Worship: 0
+    Worship: 0,
   };
 
   // Count each activity type
   if (activities.length > 0) {
-    activities.forEach(activity => {
+    activities.forEach((activity) => {
       if (typeCounts[activity.type] !== undefined) {
         typeCounts[activity.type] += 1;
       }
@@ -51,15 +54,17 @@ const ClickableBubble = ({ event }) => {
   }
 
   // Calculate total number of activities
-  const totalActivities = Object.keys(typeCounts)
-    .reduce((acc, type) => acc + typeCounts[type], 0);
+  const totalActivities = Object.keys(typeCounts).reduce(
+    (acc, type) => acc + typeCounts[type],
+    0
+  );
 
   // Prepare data for the bar chart
-  const data = Object.keys(typeCounts)
-    .map(type => ({
-      type,
-      percentage: totalActivities === 0 ? 0 : (typeCounts[type] / totalActivities) * 100
-    }));
+  const data = Object.keys(typeCounts).map((type) => ({
+    type,
+    percentage:
+      totalActivities === 0 ? 0 : (typeCounts[type] / totalActivities) * 100,
+  }));
 
   return (
     <Link
@@ -79,13 +84,17 @@ const ClickableBubble = ({ event }) => {
         </div>
         <div className="w-2/3">
           <ResponsiveContainer width="100%" height={60}>
-            <BarChart data={data} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
-              <XAxis 
-                dataKey="type" 
-                tick={{ fontSize: 12, fill: '#666' }}  
-              />
+            <BarChart
+              data={data}
+              margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
+            >
+              <XAxis dataKey="type" tick={{ fontSize: 12, fill: "#666" }} />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="percentage" fill="#8884d8" background={{ fill: 'transparent' }} />
+              <Bar
+                dataKey="percentage"
+                fill="#8884d8"
+                background={{ fill: "transparent" }}
+              />
             </BarChart>
           </ResponsiveContainer>
         </div>

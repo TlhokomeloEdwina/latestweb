@@ -36,7 +36,6 @@ const CheckinList = () => {
                 `http://${IP_ADDRESS}:3000/caregiverCheckins/${newUser.id}`
             );
 
-
             if (response.data) {
                 setCheckins(response.data.checkins);
                 console.log("Set checkin: ", checkins);
@@ -54,9 +53,9 @@ const CheckinList = () => {
     const renderMood = (score) => {
 
         const setColour = (score) => {
-            if (score < 5) {
+            if (score < 9) {
                 return "bg-red-400";
-            } else if (score >= 5 && score < 8) {
+            } else if (score >= 10 && score < 18) {
                 return "bg-orange-400";
             } else {
                 return "bg-green-400";
@@ -64,9 +63,9 @@ const CheckinList = () => {
         }
 
         const setMood = ((score) => {
-            if (score < 5) {
+            if (score < 9) {
                 return 'UNHEALTHY';
-            } else if (score >= 5 && score < 8) {
+            } else if (score < 18) {
                 return 'MODERATE';
             } else {
                 return 'HEALTHY';
@@ -111,7 +110,7 @@ const CheckinList = () => {
                                 Date:{formatDate(item.date)}
                             </Text>
                         </View>
-                        {renderMood(item.score)}
+                        {renderMood(item.totalscore)}
                     </View>
                 </TouchableOpacity>
             </View>

@@ -109,7 +109,7 @@ const People = () => {
                 <select
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
-                  className="border border-gray-300 bg-[#fafbfb]  rounded px-3 py-2"
+                  className="border border-gray-300 bg-[#fafbfb]  rounded px-3 py-2 shadow"
                 >
                   <option value="All">All</option>
                   <option value="Resident">Resident</option>
@@ -123,7 +123,7 @@ const People = () => {
                 <select
                   value={sortOrder}
                   onChange={(e) => setSortOrder(e.target.value)}
-                  className="border border-gray-300 bg-[#fafbfb]  rounded px-3 py-2"
+                  className="border border-gray-300 bg-[#fafbfb]  rounded px-3 py-2 shadow"
                 >
                   <option value="asc">A-Z</option>
                   <option value="desc">Z-A</option>
@@ -133,8 +133,8 @@ const People = () => {
             <div className="flex justify-center mb-6">
               <button
                 onClick={handleOpenForm}
-                className="flex items-center px-4 py-2 border-2 hover:text-white border-transparent font-bold rounded-md text-[#0b4dad] border-blue-400 hover:bg-[#0b4dad]  focus:outline-none
-              font-serif text-lg  ml-96 mt-6"
+                className="flex items-center px-4 py-2 border-2 shadow hover:text-white border-transparent font-bold rounded-md text-[#0b4dad] border-blue-400 hover:bg-[#0b4dad]  focus:outline-none
+              font-serif text-lg  ml-96 mt-6 bg-white"
               >
                 <FontAwesomeIcon icon={faPlus} className="mr-2" />
                 Add User

@@ -96,7 +96,11 @@ const SignIn = () => {
         );
 
         if (response.data.newCheckin.length === 0) {
-          await createCheckin();
+          // await createCheckin();
+          navigation.navigate("checkin", {
+            residentData: userObject.newUser,
+          });
+
         } else {
           const datecreated = response.data.newCheckin[0].datecreated;
           const formattedDatecreated = formatDate(new Date(datecreated));
@@ -105,7 +109,10 @@ const SignIn = () => {
           if (formattedDatecreated === formattedCurrentDate) {
             router.push("/home");
           } else {
-            await createCheckin();
+            //await createCheckin();
+            navigation.navigate("checkin", {
+              residentData: userObject.newUser,
+            });
           }
         }
       } else {
@@ -118,40 +125,40 @@ const SignIn = () => {
       setLoggin(false);
     }
   };
-
-  const createCheckin = async () => {
-    try {
-      const caregiver = await axios.get(
-        `http://${IP_ADDRESS}:3000/caregiverInfo/${userObject.newUser.id}`
-      );
-
-      if (caregiver.data) {
-        const caregiver_id = caregiver.data.caregiver.caregiver_id;
-        const checkin = await axios.post(
-          `http://${IP_ADDRESS}:3000/createCheckin`,
-          {
-            resident_id: userObject.newUser.id,
-            caregiver_id: caregiver_id,
-          }
+  /*
+    const createCheckin = async () => {
+      try {
+        const caregiver = await axios.get(
+          `http://${IP_ADDRESS}:3000/caregiverInfo/${userObject.newUser.id}`
         );
-
-        if (checkin.data) {
-          console.log("checkin created");
-          navigation.navigate("checkin", {
-            residentData: userObject.newUser,
-          });
+  
+        if (caregiver.data) {
+          const caregiver_id = caregiver.data.caregiver.caregiver_id;
+          const checkin = await axios.post(
+            `http://${IP_ADDRESS}:3000/createCheckin`,
+            {
+              resident_id: userObject.newUser.id,
+              caregiver_id: caregiver_id,
+            }
+          );
+  
+          if (checkin.data) {
+            console.log("checkin created");
+            navigation.navigate("checkin", {
+              residentData: userObject.newUser,
+            });
+          } else {
+            Alert.alert("Checkin was not created");
+          }
         } else {
-          Alert.alert("Checkin was not created");
+          Alert.alert("Checkin was not created because caregiver not found");
         }
-      } else {
-        Alert.alert("Checkin was not created because caregiver not found");
+      } catch (error) {
+        console.error("Error creating checkin: ", error);
+        Alert.alert("Error", "Failed to create checkin, try again");
       }
-    } catch (error) {
-      console.error("Error creating checkin: ", error);
-      Alert.alert("Error", "Failed to create checkin, try again");
-    }
-  };
-
+    };
+  */
   useEffect(() => {
     const checkSession = async () => {
       const token = await checkSessionValidity();
