@@ -32,7 +32,7 @@ const EventActivity = ({ activities, setShowModal, setCurrentAct }) => {
 
   return (
 
-    <div className="flex font-serif h-20 w-full rounded-md p-2 mt-2 bg-blue-200 items-center justify-between">
+    <div className="flex font-serif h-20 w-full rounded-md p-2 mt-2 bg-blue-200 items-center justify-between border-2 shadow border-blue-200">
       <div className="flex gap-x-3">
         <FontAwesomeIcon icon={faTasks} className="text-[#0b4dad]" size="xl" />
         <h1 className="font-serif font-bold text-xl text-black">{activities.name}</h1>

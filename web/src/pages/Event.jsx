@@ -99,14 +99,15 @@ const Event = () => {
   // };
 
   return (
-    <div className="event font-serif h-screen flex flex-col py-5 items-center">
-      <div className="w-full h-full font-serif flex gap-4 flex-col items-center">
-        <div className="font-bold bg-sky-200 flex justify-around py-3 w-11/12 rounded-md  text-lg">
-          <h1 className="font-bold text-3xl text-black">{days[id - 1]}</h1>
+    <div className="event font-serif h-screen flex flex-col py-5 items-center ">
+      <div className="w-full h-full font-serif flex gap-4 flex-col items-center ">
+        <div className="font-bold bg-zinc-100 flex justify-between py-3 w-11/12 rounded-md text-lg shadow border-2">
+          <h1 className="font-bold text-3xl text-black ml-8">{days[id - 1]}</h1>
           <CustomButton
             title="Add New Activity"
             handlePress={() => setShowModal(true)}
-            styles="text-sm w-1/2 hover:bg-zinc-300 hover:border-zinc-300"
+            styles="bg-white text-[#0b4dad] mx-1 shadow border-2 hover:bg-[#0b4dad]
+          hover:text-white border-transparent p-3 rounded-lg font-bold h-12 text-lg mr-8"
           />
         </div>
         {showModal && (
@@ -126,12 +127,12 @@ const Event = () => {
               setCurrentAct={setCurrentAct}
             />
         )}
-        <div className="flex gap-3 w-11/12 h-[700px] rounded-md py-5 bg-sky-200 justify-evenly">
+        <div className="flex gap-3 w-11/12 h-[700px] rounded-md py-5 bg-zinc-100 shadow border-2 justify-evenly">
           <div className="w-11/12 mr-3">
-            <h1 className="flex justify-center font-bold text-2xl text-black">
+            <h1 className="flex justify-center font-bold text-2xl text-[#0b4dad]">
               {dayActivity && dayActivity.length > 0 ? "Activities" : "No Activities availabe"}
             </h1>
-            <div className="w-full">
+            <div className="w-full ">
               {dayActivity &&
                 dayActivity.map((act) => (
                   <EventActivity
