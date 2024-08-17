@@ -73,7 +73,7 @@ const Login = () => {
             <img
               src={images.image3}
               alt="Logo"
-              className="w-24 h-24 mx-auto mb-6"
+              className="w-32 h-32 mx-auto mb-6"
             />
             <h2 className="mt-10 text-center font-serif  text-2xl font-bold leading-9 tracking-tight text-[#0b4dad]">
               Sign in to your account
@@ -81,7 +81,7 @@ const Login = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block mb-1 text-gray-600" htmlFor="username">
+            <label className="block mb-1 text-gray-600 font-serif" htmlFor="username">
               Username
             </label>
             <div className="flex items-center border border-gray-300 rounded">
@@ -101,7 +101,7 @@ const Login = () => {
 
           <div className="mb-6">
             <div className="flex items-center justify-between">
-              <label className="block mb-1 text-gray-600" htmlFor="password">
+              <label className="block mb-1 text-gray-600 font-serif" htmlFor="password">
                 Password
               </label>
             </div>
@@ -121,11 +121,10 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className={`w-full py-2 rounded ${
-              isLoading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-[#0b4dad] hover:bg-blue-300"
-            } text-white font-semibold transition duration-300`}
+            className={`w-full py-2 rounded ${isLoading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-[#0b4dad] hover:bg-blue-300"
+              } text-white font-semibold transition duration-300`}
             disabled={isLoading}
           >
             {isLoading ? "Logging in..." : "Login"}
