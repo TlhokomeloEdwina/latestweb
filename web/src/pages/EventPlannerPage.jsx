@@ -135,7 +135,9 @@ const EventPlannerPage = () => {
 
   return (
     <div className="h-screen-min bg-zinc-100 p-5">
-      <EventPlannerHeader createEvent={handleCreateEvent} generalTasks={handleGeneralTasks} />
+      {/* Melo-made sure the eventeHeader only show the link insted of both the link and button */}
+      <EventPlannerHeader setShowModal={setShowModal}
+        showType="link" />
       <h1 className="text-2xl font-bold mt-4 font-serif">{`${days[new Date().getDay()]} Activities`}:</h1>
 
       <SlideShow>

@@ -43,12 +43,12 @@ const EventActivity = ({ activities, setShowModal, setCurrentAct }) => {
           <p className="bg-transparent flex justify-center items-center w-40 px-1 rounded-lg text-lg mr-6 border-transparent border-2 shadow">From: {formatTime(activities.start_time)}</p>
           <p className="bg-transparent flex justify-center items-center w-40 px-1 rounded-lg shadow border-transparent boreder-2 text-lg mr-6">To: {formatTime(activities.end_time)}</p>
         </div>
-        <CustomButton
+        {/* <CustomButton
           title={"Edit"}
           styles="font-serif bg-white text-[#0b4dad] mx-1 text-lg shadow border-2 hover:bg-[#0b4dad]
           hover:text-white border-transparent p-3 rounded-lg font-bold h-10 flex justify-center"
           handlePress={() => handleModal()}
-        />
+        /> */}
         <button
           onClick={() => handleClick()}
         >
