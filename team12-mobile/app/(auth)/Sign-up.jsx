@@ -112,64 +112,48 @@ const SignUp = () => {
   };
 
   return (
-    <SafeAreaView className="bg-white h-full">
+    <SafeAreaView className="bg-[#fafbfb] h-full">
       <ScrollView>
-        <View className="w-full justify-center min-h-[85vh] px-6 my-6">
+        <View className="w-full justify-center min-h-[85vh] px-6 my-4">
           <View className="justify-center items-center ">
             <Image
-              source={images.logo}
+              source={images.image3}
               resizeMode="contain"
-              className="w-[115px] h-[35px] mt-2"
+              className="w-[140px] h-[140px]"
             />
-            <Text className="text-2xl text-black text-semibold mt-10 font-psemibold">
+            {/* <Text className="text-4xl  text-semibold mt-2 font-psemibold text-[#0b4dad]">
               Carewise
-            </Text>
-
-            <Text className="text-xl text-black text-semibold mt-10 font-psemibold">
-              Create an Account
-            </Text>
-            <Text className="text-m text-black text-semibold mt-10 font-pregular">
+            </Text> */}
+            <View className="relative mt-5">
+              <Text className="text-5xl text-black font-bold">
+                Sign up
+              </Text>
+              <Text className="text-center text-lg">Create your account</Text>
+              {/* <Text className="text-base text-black text-semibold mt-6 font-pregular">
               Enter your email to sign up with the app
-            </Text>
+            </Text> */}
+            </View>
           </View>
           <FormField
             title="Identity Number (ID)"
             value={form.id_number}
             handleChangeText={(e) => setForm({ ...form, id_number: e })}
-            otherStyles="mt-10"
-            placeholder="enter your Id number"
+            otherStyles="mt-7"
+            placeholder="Enter your Id number"
           />
           <FormField
             title="First Name"
             value={form.first_name}
             handleChangeText={(e) => setForm({ ...form, first_name: e })}
-            otherStyles="mt-10"
-            placeholder="enter your first name"
+            otherStyles="mt-7"
+            placeholder="Enter your first name"
           />
           <FormField
             title="Last Name"
             value={form.last_name}
             handleChangeText={(e) => setForm({ ...form, last_name: e })}
-            otherStyles="mt-10"
-            placeholder="enter your last name"
-          />
-          <FormField
-            title="Gender"
-            value={form.gender}
-            handleChangeText={(value) => {
-              setForm({ ...form, gender: value });
-            }}
-            otherStyles="mt-10 "
-            placeholder="select gender"
-          />
-
-          <FormField
-            title="Contact Number"
-            type="phone"
-            value={form.contact_number}
-            handleChangeText={(e) => setForm({ ...form, contact_number: e })}
-            otherStyles="mt-10"
-            placeholder="enter your contact number"
+            otherStyles="mt-7"
+            placeholder="Enter your last name"
           />
           <FormField
             title="Email"
@@ -178,22 +162,43 @@ const SignUp = () => {
             handleChangeText={(e) => setForm({ ...form, email: e })}
             otherStyles="mt-7"
             keyBoardType="email-address"
-            placeholder="enter your email"
+            placeholder="Enter your email"
           />
           <FormField
             title="Password"
             value={form.password}
             handleChangeText={(e) => setForm({ ...form, password: e })}
             otherStyles="mt-7"
-            placeholder="enter your password"
+            placeholder="Enter your password"
           />
 
-          <View className="flex-1 items-center justify-center  rounded-lg p-4">
-            <Button
-              title="Pick Image Profile"
+          <FormField
+            title="Gender"
+            value={form.gender}
+            handleChangeText={(value) => {
+              setForm({ ...form, gender: value });
+            }}
+            otherStyles="mt-7"
+            placeholder="Select gender"
+          />
+
+          <FormField
+            title="Contact Number"
+            type="phone"
+            value={form.contact_number}
+            handleChangeText={(e) => setForm({ ...form, contact_number: e })}
+            otherStyles="mt-7"
+            placeholder="Enter your contact number"
+          />
+
+          <Text className="mt-7 -mb-2 flex-1 text-lg text-black font-pmedium ">Image</Text>
+          <View className="  p-4 mt-5" style={[{ width: '100%', backgroundColor: "#dbeafe", borderRadius: 24, height: 75, alignItems: 'left', justifyContent: 'center' }]}>
+
+            <TouchableOpacity
               onPress={pickImage}
-              className="mb-4 bg-black-200"
-            />
+            >
+              <Text style={{ color: '#6b7280', fontSize: 16 }}>Click to pick Image profile</Text>
+            </TouchableOpacity>
 
             {image && (
               <Image
@@ -206,11 +211,11 @@ const SignUp = () => {
           <CustomButton
             title="Sign Up"
             handlePress={Register}
-            containerStyles="mt-7"
+            containerStyles="mt-10 bg-[#0b4dad]"
             isLoading={isRegistering}
           />
           <View className="justify-center pt-5 flex-row gap-2">
-            <Text className="text-lg text-gray-100 font-pregular">
+            <Text className="text-lg text-[#a1a1aa]  font-pregular">
               Have an account already?
             </Text>
             <Link

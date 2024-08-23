@@ -69,17 +69,17 @@ const Resident = ({ options, attended, setAttended, currentAct }) => {
           return (
             <TouchableOpacity
               key={option.id}
-              className="flex flex-row mb-2 bg-slate-300 rounded-md w-full h-fit p-2"
+              className="flex flex-row mb-2 bg-[#dbeafe] rounded-md w-full h-fit p-2"
               onPress={() => {
                 updateResForAct(currentAct, option.id);
                 setChecked(!checked);
               }}
             >
               {isAttended(option.id) && (
-                <Ionicons name="checkmark" size={24} color="white" />
+                <Ionicons name="checkmark" size={26} color="red" />
               )}
 
-              <Text className="font-bold ml-5 text-lg text-blue-500">
+              <Text className="font-bold ml-5 text-lg text-black">
                 {option.first_name}
               </Text>
             </TouchableOpacity>

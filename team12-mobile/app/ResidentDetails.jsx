@@ -17,10 +17,10 @@ const ActionButton = ({
   return (
     <TouchableOpacity
       onPress={handlePress}
-      className=" rounded-lg p-4 items-center justify-center w-52 h-48 my-3 mx-3 bg-violet-600 border-violet-500 shadow-gray-400 border-b-8 shadow-md "
+      className=" rounded-lg p-4 items-center justify-center w-56 h-48 my-3 mx-3 bg-[#2563eb] border-blue-500 shadow-gray-400 border-b-8 shadow-md "
     >
-      <FontAwesome name={iconName} size={50} color={"white"} />
-      <Text className="text-xl font-bold mt-5 text-white">{buttonText}</Text>
+      <FontAwesome name={iconName} size={65} color={"white"} />
+      <Text className="text-2xl font-bold mt-5 text-white">{buttonText}</Text>
     </TouchableOpacity>
   );
 };
@@ -54,30 +54,30 @@ const ResidentDetailsPage = () => {
 
   if (newUser.userType === "Family_Member") {
     return (
-      <SafeAreaView className="flex-1 bg-white">
+      <SafeAreaView className="flex-1 bg-[#fafbfb]">
         <View className="flex-row items-center justify-center pt-6 mb-6 px-4">
           <TouchableOpacity
             onPress={handleBackButton}
-            className="absolute left-10 top-10"
+            className="absolute left-10 top-8"
           >
             <FontAwesome name="arrow-left" size={24} color="black" />
           </TouchableOpacity>
-          <Text className="text-3xl font-bold  py-2 px-4 rounded-xl shadow-md">
+          <Text className="text-4xl font-pbold  py-2 px-4 rounded-xl shadow-md">
             Carewise
           </Text>
         </View>
 
         <View className="flex items-center justify-center">
-          <View className=" rounded-xl p-4 flex items-center">
-            <View className="w-24 h-24 rounded-full  flex items-center justify-center">
+          <View className=" rounded-xl p-2 flex items-center">
+            <View className="  flex items-center justify-center ">
               {residentData.image_url ? (
                 <View className="flex flex-row">
                   <Image
                     source={{ uri: residentData.image_url }}
-                    className="w-20 h-20 rounded-full object-cover"
+                    className="w-28 h-28 rounded-full object-cover"
                   />
-                  <Text className="text-xl font-bold mt-6"> {first_name}</Text>
-                  <Text className="text-xl font-bold mt-6"> {last_name}</Text>
+                  <Text className="text-2xl font-bold mt-6"> {first_name}</Text>
+                  <Text className="text-2xl font-bold mt-6"> {last_name}</Text>
                 </View>
               ) : (
                 <View className="flex flex-row ">
@@ -96,7 +96,7 @@ const ResidentDetailsPage = () => {
 
         <View className="flex items-center justify-center ">
           <View className="flex flex-col">
-            <View className="flex-row space-x-2 mb-4  ">
+            <View className="flex-row space-x-2 mb-4  text-xl ">
               <ActionButton
                 iconName="check-circle"
                 iconSize={30}
@@ -105,7 +105,7 @@ const ResidentDetailsPage = () => {
                 handlePress={() => router.push("/checkinView")}
               />
             </View>
-            <View className="flex-row space-x-8 mb-4">
+            <View className="flex-row space-x-8 mb-4 text-xl">
               <ActionButton
                 iconName="users"
                 iconSize={30}

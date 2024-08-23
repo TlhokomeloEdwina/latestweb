@@ -52,7 +52,7 @@ const Sidebar = ({ onToggleSidebar }) => {
       <div>
         <div className="flex items-center justify-evenly p-4">
           <h1
-            className={`${isCollapsed ? "hidden" : "text-3xl font-semibold font-serif "
+            className={`${isCollapsed ? "hidden" : "text-3xl font-semibold  "
               }`}
           >
             Carewise

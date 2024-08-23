@@ -12,7 +12,7 @@ export default function App() {
         <View className="w-full justify-center items-center min-h-[85vh] px-4">
           <Image
             source={images.image3}
-            className="max-w-[380px] w-full h-[300px]"
+            className="max-w-[400px] w-full h-[340px]"
             resizeMode="contain"
           />
 
@@ -25,7 +25,7 @@ export default function App() {
           <CustomButton
             title="Continue with Email"
             handlePress={() => router.push("/Sign-in")}
-            containerStyles="w-full mt-7 "
+            containerStyles="w-full mt-7 bg-[#0b4dad] p-6"
           />
         </View>
       </ScrollView>

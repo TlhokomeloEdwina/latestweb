@@ -141,7 +141,7 @@ const Activity = () => {
             <Text>No activities available</Text>
           )}
           <AttModal isOpen={showModal}>
-            <View className="bg-white w-11/12 h-fit flex p-4 justify-center items-center rounded-md shadow">
+            <View className="bg-white w-11/12 h-fit flex p-4 justify-center items-center ">
               <Text className="font-bold text-white text-2xl mb-3">
                 Mark attendance
               </Text>
@@ -152,15 +152,15 @@ const Activity = () => {
                 setAttended={setAttended}
               />
 
-              <View className="w-full flex flex-row justify-around">
+              <View className="w-full  justify-around">
                 <Pressable
-                  className="w-1/3 h-8 flex items-center justify-center bg-red-200 rounded-sm text-white"
+                  className="w-[100px] flex items-center justify-center  bg-red-600 "
                   onPress={() => setShowModal(false)}
                 >
                   <Text className="text-white font-bold text-lg">Cancel</Text>
                 </Pressable>
                 <Pressable
-                  className="w-1/3 h-8 flex items-center justify-center  rounded-sm"
+                  className="w-[100px] flex items-center justify-center  bg-red-600 "
                   onPress={() => submitAttendance()}
                 >
                   <Text className="text-white font-bold text-lg">Submit</Text>

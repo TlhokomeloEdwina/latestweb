@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { View, Text, Image, Alert } from "react-native";
+import { View, Text, Image, Alert, ImageBackground } from "react-native";
 import Question from "../components/Question";
 import { IP_ADDRESS } from "@env";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -182,7 +182,7 @@ const Checkin = () => {
       case "choice":
         if (selectedOption === "red" || selectedOption === "blue" || selectedOption === "never") {
           setScore(1);
-        } else if (selectedOption === "yellow" || selectedOption === "sometimes" || selectedOption === "rearly") {
+        } else if (selectedOption === "yellow" || selectedOption === "Sometimes" || selectedOption === "Rarly") {
           setScore(1);
         } else if (selectedOption === "green" || selectedOption === "always") {
           setScore(3);
@@ -195,7 +195,7 @@ const Checkin = () => {
           || selectedOption === "Chest") {
           setScore(1);
         } else if (selectedOption === "Stomach" || selectedOption === "Hips" || selectedOption === "Back Neck" ||
-          selectedOption === "Neck" || selectedOption === "Back Hips" || selectedOption === "Neck"
+          selectedOption === "Neck" || selectedOption === "Back Hips" || selectedOption === "hips"
         ) {
           setScore(1);
         } else {
@@ -225,11 +225,11 @@ const Checkin = () => {
       .then((response) => {
         if (currentQuestionIndex < questions.length - 1) {
           // checks if the pain question has been reached 
-          if (currentQuestionIndex === 6 && selectedOption === "No") { // since index starts at 0 - 8, 
-            setIsCheckinCompleted(true); // if resident feels no pain end checkin and route home
+          if (currentQuestion.id === 7 && selectedOption === "no") {
+            setIsCheckinCompleted(true);
             router.replace("/home");
           } else {
-            setCurrentQuestionIndex(currentQuestionIndex + 1); // not sure if should be outside of if statement or duplicated outside of statement
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
           }
 
         } else {
@@ -268,30 +268,29 @@ const Checkin = () => {
     );
   }
   return (
-    <SafeAreaView className="flex-1">
-      <View className="flex-1 justify-center items-center bg-[source('images.checkinpic')}">
+    <SafeAreaView className=" bg-[#fafbfb] h-full flex-1">
+      <View className="flex-1 justify-center items-center ">
         <Image
-          source={images.checkinpic}
-          className="w-52 h-52 rounded-md"
-
+          source={images.checkinwelcome}
+          className="w-[390px] h-[280px] rounded-md"
         />
         <View className="flex-row items-center justify-center">
-          <Text className="font-bold justify-center text-2xl">
-            Good day {residentData.first_name} {residentData.last_name}
-          </Text>
+          <Text className="font-bold justify-center text-3xl">
+            Good day <Text className="text-[#0b4dad]">{residentData.first_name} {residentData.last_name}
+            </Text> </Text>
         </View>
         <View classname="flex-row justify-around items-center">
 
           <CustomButton
-            title="Complete checkin"
+            title="Please complete quiz"
             handlePress={() => createCheckin()}
-            containerStyles="w-11/12 mt-7 justify-center"
+            containerStyles="  bg-[#2563eb] p-6 rounded-lg mb-6 mt-6 w-[300px] border-blue-500 shadow-gray-400 border-b-8 shadow-md"
           />
 
           <CustomButton
-            title="Skip"
+            title="Skip quiz"
             handlePress={() => handleSkip()}
-            containerStyles="w-1/4 mt-7 ml-2 "
+            containerStyles="bg-[#0b4dad]  bg-[#2563eb] p-6 rounded-lg mb-6 mt-4 w-[300px] border-blue-500 shadow-gray-400 border-b-8 shadow-md"
           />
         </View>
 

@@ -370,14 +370,14 @@ const Home = () => {
   //Resident homepage
   if (newUser.userType === "Resident") {
     return (
-      <SafeAreaView className="flex-1 justify-center items-center bg-[#f8fafc] pt-5">
+      <SafeAreaView className="flex-1 justify-center items-center bg-[#f8fafc] ">
         <View className="bg-[#f8fafc] rounded-lg m-[9px]">
-          <View className="items-center mt-4 flex-row justify-center">
+          <View className="items-center mr-[36px] flex-row justify-center">
             <Image
               source={images.image3}
-              className="w-[100px] h-[100px] rounded-full"
+              className="w-[110px] h-[110px] rounded-full"
             />
-            <Text className="text-black text-3xl font-pregular mt-2  p-[10px] rounded-lg mx-[20px] px-[20px]">
+            <Text className="text-black text-[33px]  rounded-lg  font-bold">
               CAREWISE
             </Text>
           </View>
@@ -428,13 +428,19 @@ const Home = () => {
   if (newUser.userType === "Family_Member") {
     return (
       <SafeAreaView className="flex-1  items-center bg-[#fafbfb] pt-5">
-        <Text className="text-3xl font-bold py-2 px-4 rounded-xl shadow-md flex">
-          Carewise
-        </Text>
-        <View className="mt-12 items-center justify-center w-full ">
+        <View className="items-center mr-[36px] flex-row justify-center">
+          <Image
+            source={images.image3}
+            className="w-[110px] h-[110px] rounded-full"
+          />
+          <Text className="text-black text-[33px]  rounded-lg  font-bold">
+            CAREWISE
+          </Text>
+        </View>
+        <View className="mt-32 items-center justify-center w-[370px] h-48 ">
           {residentData ? (
             <>
-              <View className="bg-[#f5f5f5] p-20 items-center rounded-lg shadow-md border border-slate-200  shadow-gray-400 border-b-8 ">
+              <View className="bg-[#dbeafe] p-20 items-center rounded-3xl shadow-md border border-slate-200  shadow-gray-400 border-b-8 ">
                 <TouchableOpacity
                   onPress={() => {
                     navigation.navigate("ResidentDetails", {
@@ -445,7 +451,7 @@ const Home = () => {
                   {residentData.image_url ? (
                     <Image
                       source={{ uri: residentData.image_url }}
-                      className="w-[180px] h-[180px] rounded-full border-4 border-blue-500 shadow-md"
+                      className="w-[200px] h-[200px] rounded-full border-4 border-blue-500 shadow-md"
                     />
                   ) : (
                     <View className="w-[180px] h-[180px] rounded-full bg-gray-200 justify-center items-center border-4 border-blue-500 shadow-md">
@@ -457,13 +463,13 @@ const Home = () => {
                     </View>
                   )}
                 </TouchableOpacity>
-                <Text className="text-2xl font-bold mt-4">
+                <Text className="text-2xl font-pbold mt-4">
                   {residentData.first_name} {residentData.last_name}
                 </Text>
                 <Text className="text-[#0b4dad] mt-1 text-xl font-bold">
                   {residentData.contact_number}
                 </Text>
-                <Text className="text-[#0b4dad] mt-1 text-base font-semibold">
+                <Text className="text-black mt-1 text-sm font-bold ">
                   {residentData.email}
                 </Text>
               </View>
@@ -516,21 +522,26 @@ const Home = () => {
     return (
       <SafeAreaView className="flex-1 bg-[#fafbfb]">
         <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
-          <View className="items-center mt-4">
-            <Image source={images.image3} className="w-24 h-24 rounded-full" />
-            <Text className="text-black text-3xl font-bold mt-2">CAREWISE</Text>
+          <View className="items-center mr-[36px] flex-row justify-center">
+            <Image
+              source={images.image3}
+              className="w-[110px] h-[110px] rounded-full"
+            />
+            <Text className="text-black text-[33px]  rounded-lg  font-bold">
+              CAREWISE
+            </Text>
           </View>
 
           {!dropDownScreen && (
-            <View className="mt-6 mx-4 p-4 bg-[#0b4dad] rounded-lg shadow-md ">
+            <View className="mt-6 mx-3 p-4 bg-[#93c5fd] rounded-xl  w-[370px] border-blue-200 shadow-gray-400 border-b-8 shadow-md ">
               <TouchableOpacity
-                className="flex-row justify-between items-center text-white"
+                className="flex-row justify-between items-center text-black "
                 onPress={() => {
                   setDropDownScreen(true);
                   fetchPeopleData(cottageData?.id);
                 }}
               >
-                <Text className="text-xl text-white font-bold">
+                <Text className="text-xl black font-pbold">
                   Cottage Name: {cottageData?.name || ""}
                 </Text>
                 <Image source={icons.drop_down} className="w-4 h-4" />
@@ -538,14 +549,14 @@ const Home = () => {
 
               {activity && activity.length > 0 ? (
                 <View className="mt-4">
-                  <Text className="text-lg font-medium mb-2 text-center text-[#bfcddb]">
+                  <Text className="text-xl font-bold mb-2 text-center text-[#0b4dad]">
                     Today's Activity
                   </Text>
-                  <View className="bg-[#f5f5f4] p-4 rounded-lg shadow-custom-md mb-4">
-                    <View className="w-11/12 flex-row justify-between mb-2 p-2">
-                      <Text className="text-lg">Activity</Text>
-                      <Text className="text-lg">Time</Text>
-                    </View>
+                  <View className="bg-[#f5f5f4] p-4 rounded-lg shadow-custom-md mb-4 ">
+                    <View className="w-11/12 flex-row justify-between mb-2 p-2 text-xl">
+                      <Text className="text-xl font-pbold">Activity</Text>
+                      <Text className="text-2xl font-bold">Time</Text>
+                    </View >
                     {activity.map((act) => (
                       <Activity key={act.id} activity={act} />
                     ))}
@@ -560,18 +571,18 @@ const Home = () => {
           )}
 
           {dropDownScreen && (
-            <View className="mt-6 mx-4 p-4 bg-white rounded-lg shadow-md">
+            <View className="mt-6 mx-3 p-4 bg-[#93c5fd] rounded-xl shadow-md w-[370px]">
               <TouchableOpacity
                 className="flex-row justify-between items-center"
                 onPress={() => setDropDownScreen(false)}
               >
-                <Text className="text-xl font-semibold">
-                  Assigned to Cottage: {cottageData?.name || ""}
+                <Text className="text-xl font-pbold">
+                  Cottage Name: {cottageData?.name || ""}
                 </Text>
                 <Image source={icons.drop_up} className="w-4 h-4" />
               </TouchableOpacity>
 
-              <ScrollView className="mt-4">
+              <ScrollView className="mt-4 ">
                 {peopleData.length > 0 ? (
                   peopleData.map((resident) => (
                     <ResidentCard
@@ -590,10 +601,10 @@ const Home = () => {
               </ScrollView>
               <CustomButton
                 title={"Checkin List"}
-                containerStyles="mt-2"
                 handlePress={() =>
                   navigation.navigate("checkinList", { newUser })
                 }
+                containerStyles="mt-7 text-white bg-[#3b82f6]"
               />
             </View>
           )}

@@ -179,7 +179,7 @@ const notification = () => {
     return (
       <View>
         <TouchableOpacity
-          className="my-[10px] mx-[20px] rounded-[10px] bg-[#F0F0F0] p-[10px]  border-gray-200 shadow-gray-400 border-b-8 shadow-md"
+          className="my-[10px] mx-[20px] rounded-[10px] bg-[#dbeafe] p-[10px]  border-blue-200 shadow-gray-400 border-b-8 shadow-md"
           onPress={() => handleAlertPress(item.alert_id)}
         >
           <View className="flex-row ">
@@ -252,7 +252,7 @@ const notification = () => {
     return (
       <View>
         <TouchableOpacity
-          className="my-[10px] mx-[20px] rounded-[10px] bg-[#F0F0F0] p-[10px] "
+          className="my-[10px] mx-[20px] rounded-[10px] bg-[#dbeafe] p-[10px]  border-blue-200 shadow-gray-400 border-b-8 shadow-md "
           onPress={() => handleAlertPress(item.id)}
         >
           <View className="flex-row items-center">
@@ -321,7 +321,7 @@ const notification = () => {
 
   if (newUser.userType === "Family_Member") {
     return (
-      <SafeAreaView className="flex-1 bg-white">
+      <SafeAreaView className="flex-1 bg-[#fafbfb]">
         <View className="flex-1 justify-center items-center  pt-5">
           {ResidentData ? (
             <Text className="text-black text-xl font-bold mt-2">

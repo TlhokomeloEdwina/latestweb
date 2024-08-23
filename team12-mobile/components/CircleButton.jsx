@@ -12,7 +12,7 @@ const CircleButton = ({ iconName, onPress, color, background, title }) => {
       <View className="rounded-md">
         <View className="items-center justify-center mx-[25px] my-[25px]">
           <FontAwesome name={iconName} size={65} color={"black"} />
-          {title && <Text className="text-lg mt-3 text-black">{title}</Text>}
+          {title && <Text className="text-[22px] mt-3 text-black">{title}</Text>}
         </View>
       </View>
     </TouchableOpacity>

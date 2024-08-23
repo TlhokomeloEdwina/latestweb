@@ -20,7 +20,7 @@ const Activity = ({ activity }) => {
   const formattedTime = formatTime(activity.start_time);
   return (
     <View className="w-11/12 flex flex-row justify-between p-2">
-      <Text className="font-bold">{activity.name}</Text>
+      <Text className="font-semibold text-xl">{activity.name}</Text>
       <Text>{formattedTime}</Text>
     </View>
   );

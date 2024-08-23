@@ -146,28 +146,28 @@ const MyPassouts = () => {
     return (
       <TouchableOpacity
         key={item.id}
-        className="bg-[#2563eb] p-6 rounded-lg mb-6 w-[293px] border-blue-500 shadow-gray-400 border-b-8 shadow-md "
+        className="bg-[#bae6fd] p-4 rounded-lg mb-4 w-[340px] border-blue-300 shadow-gray-400 border-b-8 shadow-md "
         onPress={() => handlePassoutPress(item)}
       >
         <View className="flex-row justify-between items-center ">
-          <Text className="text-2xl font-bold flex-1 text-white">
+          <Text className="text-2xl font-bold flex-1 text-black">
             {item.destination}
           </Text>
           {renderStatusIcon(item.status)}
         </View>
         {expandedId === item.id && (
           <View className="mt-6">
-            <Text className="text-xl font-bold text-white">
+            <Text className="text-xl font-bold text-black">
               Requested on: {formatDateTime(item.request_date).formattedDate}{" "}
               {formatDateTime(item.request_date).formattedTime}
             </Text>
-            <Text className="text-xl font-bold mt-6 text-white">
+            <Text className="text-xl font-bold mt-6 text-black">
               Reason:{" "}
               <Text className="font-bold text-orange-400 text-2xl">
                 {item.reason}
               </Text>
             </Text>
-            <Text className="text-xl mt-6 text-white">
+            <Text className="text-xl mt-6 text-black">
               Emergency Contact: {item.emergency_contact}
             </Text>
           </View>
@@ -180,22 +180,22 @@ const MyPassouts = () => {
     return (
       <TouchableOpacity
         key={item.id}
-        className="bg-[#2563eb] p-6 rounded-lg mb-6 w-[293px] border-blue-500 shadow-gray-400 border-b-8 shadow-md "
+        className="bg-[#bae6fd] p-4 rounded-lg mb-4 w-[340px] border-blue-300 shadow-gray-400 border-b-8 shadow-mdd "
         onPress={() => handlePassoutPress(item)}
       >
         <View className="flex-row justify-between items-center ">
-          <Text className="text-2xl font-bold flex-1 text-white">
+          <Text className="text-2xl font-bold flex-1 text-black">
             {item.reason}
           </Text>
           {renderStatusIcon(item.status)}
         </View>
         {expandedId === item.id && (
           <View className="mt-6">
-            <Text className="text-xl font-bold text-white">
+            <Text className="text-xl font-bold text-black">
               Requested on: {formatDateTime(item.visit_date).formattedDate}{" "}
               {formatDateTime(item.visit_date).formattedTime}
             </Text>
-            <Text className="text-xl font-bold mt-6 text-white">
+            <Text className="text-xl font-bold mt-6 text-black">
               <Text className="font-bold text-orange-400 text-2xl">
                 Reason: {item.reason}
               </Text>
@@ -208,7 +208,7 @@ const MyPassouts = () => {
 
   if (loading) {
     return (
-      <SafeAreaView className="flex-1 justify-center items-center">
+      <SafeAreaView className="flex-1 justify-center items-center ">
         <ActivityIndicator size="large" color="blue" />
       </SafeAreaView>
     );
@@ -217,29 +217,31 @@ const MyPassouts = () => {
   if (newUser.userType === "Resident") {
     return (
       <SafeAreaView className="flex-1 bg-[#fafbfb]">
-        <View className="items-center justify-center mt-5">
+        <View className="items-center justify-center mt-5 mb-6">
+
           <TouchableOpacity
             onPress={() => navigation.goBack()}
-            className="absolute top-[-10] left-5  rounded-full p-2"
+            className="absolute top-[-10] left-5  rounded-full p-2 mr-8 "
           >
             <FontAwesome name="arrow-left" size={30} />
           </TouchableOpacity>
-          <Text className="text-black text-2xl mb-6">My Passouts Page</Text>
+          <Text className="text-3xl font-bold text-center ml-5">My Passouts Page</Text>
         </View>
 
         {/* Filter Section */}
         <View className="px-4 mb-4 mt-3 justify-center items-center border-black">
-          <Text className="text-xl mb-2">Sort by Status</Text>
+          <Text className="text-2xl mb-2">Sort by Status</Text>
           <Picker
             selectedValue={selectedFilter}
             style={{
               height: 50,
               width: 180,
-              backgroundColor: "#2563eb",
+              backgroundColor: "#bfdbfe",
               borderRadius: 90,
-              fontSize: 18,
+              fontSize: 24,
               fontWeight: "bold",
-              color: "white",
+              color: "black",
+
             }}
             onValueChange={(itemValue) => setSelectedFilter(itemValue)}
           >
@@ -263,7 +265,7 @@ const MyPassouts = () => {
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={{
             marginTop: 16,
-            width: "75%",
+
             alignSelf: "center",
           }}
         />
@@ -281,22 +283,22 @@ const MyPassouts = () => {
           >
             <FontAwesome name="arrow-left" size={30} />
           </TouchableOpacity>
-          <Text className="text-black text-2xl mb-6">My Visits Page</Text>
+          <Text className="text-3xl font-bold text-center ml-5">My Visits Page</Text>
         </View>
 
         {/* Filter Section */}
         <View className="px-4 mb-4 mt-3 justify-center items-center border-black">
-          <Text className="text-xl mb-2">Sort by Status</Text>
+          <Text className="text-2xl mb-2">Sort by Status</Text>
           <Picker
             selectedValue={selectedFilter}
             style={{
               height: 50,
               width: 180,
-              backgroundColor: "#2563eb",
+              backgroundColor: "#bfdbfe",
               borderRadius: 90,
               fontSize: 18,
               fontWeight: "bold",
-              color: "white",
+              color: "black",
             }}
             onValueChange={(itemValue) => setSelectedFilter(itemValue)}
           >
@@ -320,7 +322,7 @@ const MyPassouts = () => {
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={{
             marginTop: 16,
-            width: "75%",
+
             alignSelf: "center",
           }}
         />

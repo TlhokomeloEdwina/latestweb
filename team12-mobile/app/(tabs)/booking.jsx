@@ -1,4 +1,5 @@
-import { View, Text, Button, ScrollView, Pressable } from "react-native";
+import { View, Text, Button, ScrollView, Pressable, TouchableOpacity, Image } from "react-native";
+import { FontAwesome6 } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
@@ -9,7 +10,7 @@ import { IP_ADDRESS } from "@env";
 import AttModal from "../../components/AttModal";
 import ActList from "../../components/ActList";
 import Resident from "../../components/Resident";
-
+import { images } from "../../constants/images";
 const booking = () => {
   const navigation = useNavigation();
 
@@ -155,7 +156,15 @@ const booking = () => {
   if (newUser.userType === "Resident") {
     return (
       <SafeAreaView className="flex-1 justify-center items-center bg-[#f8fafc] w-full ">
-        <Text className="text-black text-3xl mb-4 font-pregular">My Passouts</Text>
+        <View className="flex-row items-center mb-6 ">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("home")}
+            className="mr-8 "
+          >
+            <FontAwesome6 name="arrow-left" size={30} color="black" />
+          </TouchableOpacity>
+          <Text className="text-3xl font-bold text-center ml-5">My Passouts</Text>
+        </View>
         <View className="space-y-4 w-3/4 px-4">
           <CustomButton
             title="View Passouts"
@@ -176,18 +185,26 @@ const booking = () => {
   if (newUser.userType === "Family_Member") {
     return (
       <SafeAreaView className="flex-1 justify-center items-center bg-white w-full">
-        <Text className="text-black text-3xl mb-4 font-pregular">My Bookings</Text>
+        <View className="flex-row items-center mb-6 ">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("home")}
+            className="mr-8 "
+          >
+            <FontAwesome6 name="arrow-left" size={30} color="black" />
+          </TouchableOpacity>
+          <Text className="text-3xl font-pbold text-center ml-5">My Bookings</Text>
+        </View>
         <View className="space-y-4 w-3/4">
           <CustomButton
             title="View Bookings"
             handlePress={handleMyPassouts}
-            containerStyles="mb-4 rounded-[30px] items-center justify-center w-64 h-48 border bg-[#f97316] border-orange-400 shadow-gray-400 border-b-8 shadow-md mx-5 my-5 ml-[10px] opacity-[0.9] text-xl"
+            containerStyles="mb-4 rounded-[30px] items-center justify-center w-64 h-48 border bg-[#2563eb] border-[#3b82f6] shadow-gray-400 border-b-8 shadow-md mx-5 my-5 ml-[10px] opacity-[0.9] text-xl"
           />
 
           <CustomButton
             title="Request Visit"
             handlePress={handleRequestPassout}
-            containerStyles="mb-4 rounded-[30px] items-center justify-center w-64 h-48 border bg-[#a21caf] border-[#c026d3] shadow-gray-400 border-b-8 shadow-md mx-2 my-5 ml-[10px] opacity-[0.9]"
+            containerStyles="mb-4 rounded-[30px] items-center justify-center w-64 h-48 border bg-[#2563eb] border-[#3b82f6] shadow-gray-400 border-b-8 shadow-md mx-2 my-5 ml-[10px] opacity-[0.9]"
           />
         </View>
       </SafeAreaView>
@@ -199,51 +216,62 @@ const booking = () => {
       <SafeAreaView className="h-screen bg-[#fafbfb]">
         <ScrollView className="">
           <View className="h-11/12 py-4 w-screen flex justify-center items-center">
-            <Text className="font-bold bg-[#0b4dad] px-10 py-2 rounded-md text-3xl text-white mb-6">
-              {Day[new Date().getDay()]}
-            </Text>
-            {activity.length > 0 ? (
-              activity.map((act) => (
-                <ActList
-                  key={act.id}
-                  act={act}
-                  setCurrentAct={setCurrent}
-                  setShowModal={setShowModal}
-                />
-              ))
-            ) : (
-              <Text className="flex items-center justify-center font-bold text-xl">
-                No activities available
+            <View className="items-center mr-[36px] flex-row justify-center">
+              <Image
+                source={images.image3}
+                className="w-[110px] h-[110px] rounded-full"
+              />
+              <Text className="text-black text-[33px]  rounded-lg  font-bold">
+                CAREWISE
               </Text>
-            )}
-            <AttModal isOpen={showModal}>
-              <View className="bg-white w-11/12 h-fit flex p-4 justify-center items-center rounded-md shadow">
-                <Text className="font-bold text-[#42606b] text-2xl mb-3">
-                  Mark attendance
+            </View>
+            <View className="mt-4 mx-3 p-4 bg-[#93c5fd] rounded-xl w-[370px] items-center justify-center border-blue-200 shadow-gray-400 border-b-8 shadow-md">
+              <Text className="font-bold  px-10 py-2 rounded-md text-3xl text-black mb-6 items-center justify-center">
+                {Day[new Date().getDay()]}
+              </Text>
+              {activity.length > 0 ? (
+                activity.map((act) => (
+                  <ActList
+                    key={act.id}
+                    act={act}
+                    setCurrentAct={setCurrent}
+                    setShowModal={setShowModal}
+                  />
+                ))
+              ) : (
+                <Text className="flex items-center justify-center font-bold text-xl">
+                  No activities available
                 </Text>
-                <Resident
-                  options={peopleData}
-                  attended={attended}
-                  currentAct={currentAct}
-                  setAttended={setAttended}
-                />
+              )}
+              <AttModal isOpen={showModal}>
+                <View className="bg-white w-11/12 h-fit flex p-4 justify-center items-center rounded-md shadow">
+                  <Text className="font-bold text-[#0b4dad] text-2xl mb-3">
+                    Mark attendance
+                  </Text>
+                  <Resident
+                    options={peopleData}
+                    attended={attended}
+                    currentAct={currentAct}
+                    setAttended={setAttended}
+                  />
 
-                <View className="w-full flex flex-row justify-around">
-                  <Pressable
-                    className="w-1/3 h-8 flex items-center justify-center bg-black-200 rounded-sm"
-                    onPress={() => setShowModal(false)}
-                  >
-                    <Text className="text-black font-bold text-lg">Cancel</Text>
-                  </Pressable>
-                  <Pressable
-                    className="w-1/3 h-8 flex items-center justify-center bg-black-200 rounded-sm"
-                    onPress={() => submitAttendance()}
-                  >
-                    <Text className="text-black font-bold text-lg">Submit</Text>
-                  </Pressable>
+                  <View className="w-full flex flex-row justify-around">
+                    <Pressable
+                      className="w-1/3 h-8 flex items-center justify-center bg-[#0b4dad] rounded-sm"
+                      onPress={() => setShowModal(false)}
+                    >
+                      <Text className="text-white font-bold text-lg">Cancel</Text>
+                    </Pressable>
+                    <Pressable
+                      className="w-1/3 h-8 flex items-center justify-center  bg-[#0b4dad] rounded-sm"
+                      onPress={() => submitAttendance()}
+                    >
+                      <Text className="text-white font-bold text-lg">Submit</Text>
+                    </Pressable>
+                  </View>
                 </View>
-              </View>
-            </AttModal>
+              </AttModal>
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>

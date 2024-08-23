@@ -54,13 +54,26 @@ const FormField = ({
 
   const renderDropdown = () => (
     <SelectList
-      className="border-2 border-black-200 w-full h-16 px-4 bg-white rounded-2xl"
+      className=""
       placeholder={`Select ${title}`}
       setSelected={handleChangeText}
       data={getDropDonwData()}
       save="value"
-    />
+      boxStyles={{
+        borderWidth: 0,
+        width: '100%',
+        backgroundColor: '#dbeafe',
+        height: 75,
+        alignItems: 'center',
+        shadowOpacity: 0.25,
+        borderRadius: 24,
 
+      }}
+      inputStyles={{
+        color: '#6b7280',
+        fontSize: 16,
+      }}
+    />
   );
 
   const handleTextChange = (text) => {
@@ -86,14 +99,14 @@ const FormField = ({
 
   return (
     <View className={`space-y-2 ${otherStyles}`}>
-      <Text className="text-lg text-black font-pmedium">{title}</Text>
+      <Text className="text-lg text-black font-pmedium ">{title}</Text>
 
       {["Gender", "Duration", "Reason", "Reason for passout"].includes(
         title
       ) ? (
         renderDropdown()
       ) : (
-        <View className=" border-2 border-black-200 w-full h-16 px-4 bg-white rounded-2xl items-center flex-row">
+        <View className=" shadow-md w-full h-[75px] px-4 bg-blue-100 bg-opacity-10 rounded-3xl items-center flex-row">
           <TextInput
             className="flex-1 text-black font-psemibold text-base"
             value={value}

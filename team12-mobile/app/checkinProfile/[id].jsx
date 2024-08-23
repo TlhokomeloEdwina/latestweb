@@ -9,7 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { IP_ADDRESS } from "@env";
 import { useNavigation } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
-//import SleepEnergyChart from "../../components/EnergyChart";
+
 
 const ResidentProfile = () => {
   const { newUser, token } = userObject || {};
@@ -22,13 +22,11 @@ const ResidentProfile = () => {
   const [reviewText, setReviewText] = useState("");
   const [checkinReview, setCheckinReview] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  const [resident, setResident] = useState([]);
+  const [resident, setResident] = useState(null);
   const [selectedMood, setSelectedmood] = useState("");
   const [attendance, setAttendance] = useState("Yes");
   const [reason, setReason] = useState("");
   const [memeory, setMemory] = useState("");
-  const [sleepPatten, setSleepPattern] = useState([]);
-  const [enegyLevels, setEnergyLevels] = useState([]);
   const [physical, setPhysical] = useState(false);
   const [social, setSocial] = useState(false);
   const [pain, setPain] = useState("");
@@ -54,13 +52,15 @@ const ResidentProfile = () => {
       const response = await axios.get(
         `http://${IP_ADDRESS}:3000/checkinbyId/${id}`
       );
-      console.log("checkin responses : " + response.data.checkin)
-      if (response.data) {
-        setCheckinresponses(response.data.checkin);
-        formatResponses(response.data.checkin);
-      } else {
-        console.error(response.data, "no checkin found");
-      }
+      console.log("checkin responses : ", response.data.checkin)
+      // if (response.data) {
+      //   setCheckinresponses(response.data.checkin);
+      //   formatResponses(response.data.checkin);
+      // } else {
+      //   console.error(response.data, "no checkin found");
+      // }
+      setCheckinresponses(response.data.checkin);
+      formatResponses(response.data.checkin)
     } catch (error) {
       console.error("error occurred when fetching checkin", error);
     } finally {
@@ -140,10 +140,10 @@ const ResidentProfile = () => {
       const response = await axios.get(
         `http://${IP_ADDRESS}:3000/residentInfo/${id}`
       );
-      console.log("this is resident info: " + response.data.resident + "the id is : " + id)
+      console.log("this is resident info: ", response.data.resident + "the id is : " + id)
       if (response.data) {
         setResident(response.data.resident);
-        console.log("this is set resident info: " + resident);
+        console.log("this is set resident info: ", resident);
       } else {
         console.error(response.data, "no resident found");
       }
@@ -166,7 +166,7 @@ const ResidentProfile = () => {
   const getAttendance = async () => {
     try {
       const attendanceResponse = await axios.get(`http://${IP_ADDRESS}:3000/residentAttendance/${resident.id}`);// remember to create api endpoint 
-      console.log("the attendance:" + attendanceResponse.data)
+      console.log("the attendance:", attendanceResponse.data)
       if (attendanceResponse.data.attendance.length > 0) {
         setAttendance("Yes");
       } else {
@@ -176,50 +176,6 @@ const ResidentProfile = () => {
       console.error("Error", "error occured fetching resident attendance")
     }
   }
-
-  //get resident sleep pattern
-  const getSleepPattern = async (id) => {
-    try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3000/sleepPattern/${id}`);
-      console.log("sleep patten :" + response.data.scores)
-      if (response.data) {
-        setSleepPattern(response.data.scores);
-      } else {
-        setSleepPattern([]);
-      }
-    } catch (error) {
-      console.error("Error", "error occured fetching resident sleep pattern")
-    }
-  }
-
-  //get resident energy pattern
-  const getEnegyLevels = async (id) => {
-    try {
-      const response = await axios.get(`http://${IP_ADDRESS}:3000/energyLevels/${id}`);
-      console.log("energy patten :" + response.data.scores)
-      if (response.data) {
-        setEnergyLevels(response.data.scores);
-      } else {
-        setEnergyLevels([]);
-      }
-    } catch (error) {
-      console.error("Error", "error occured fetching resident energy pattern")
-    }
-  }
-
-  // To return responses
-  useEffect(() => {
-    getCheckinResponses();
-    getResidentInfo();
-  }, []);
-
-  useEffect(() => {
-
-    getEnegyLevels(resident.id);
-    getSleepPattern(resident.id);
-
-  }, []);
-
   // Submit a review for check-in
   const submitReview = async () => {
     try {
@@ -248,26 +204,6 @@ const ResidentProfile = () => {
     navigation.goBack();
   };
 
-  // To filter responses by mood
-  const searchFilter = (item) => {
-    const query = selectedMood;
-    const isMatch = item.mood_type.includes(query);
-    return isMatch;
-  };
-
-  function formatDate(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-
-    return `${day}-${month}-${year}`;
-  }
-
-  // Filtered check-ins
-  const Checkins = selectedMood
-    ? checkinResponses.filter(searchFilter)
-    : checkinResponses;
-
   const renderResponseItem = ({ item }) => (
     <View className="p-4 bg-[#fafbfb] border border-gray-300 mb-1 rounded-md">
       <View className="bg-[#fafbfb]">
@@ -281,6 +217,12 @@ const ResidentProfile = () => {
       </View>
     </View>
   );
+
+  // To return responses
+  useEffect(() => {
+    getCheckinResponses();
+    getResidentInfo();
+  }, []);
 
   if (isLoading) {
     return (
@@ -305,7 +247,7 @@ const ResidentProfile = () => {
         </View>
 
         <View className="flex-row items-center">
-          <Text className="text-[18px] font-pbold mb-[5px]">
+          <Text className="text-[18px] font-pbold mb-[5px] ml-5">
             {resident.first_name}'s Wellbeing
           </Text>
         </View>

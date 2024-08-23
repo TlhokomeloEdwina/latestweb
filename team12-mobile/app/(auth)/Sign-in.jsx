@@ -237,19 +237,23 @@ const SignIn = () => {
   });
 
   return (
-    <SafeAreaView className="bg-white h-full">
+    <SafeAreaView className="bg-[#fafbfb] h-full">
       <ScrollView>
         <View className="w-full justify-center min-h-[85vh] px-6 my-4">
           <View className="justify-center items-center ">
             <Image
               source={images.image3}
               resizeMode="contain"
-              className="w-20 h-20"
+              className="w-[140px] h-[140px]"
             />
-
-            <Text className="text-3xl text-black text-semibold mt-10 font-psemibold">
-              Log in to Carewise
-            </Text>
+            <View className="relative mt-5">
+              <Text className="text-5xl text-black font-bold">
+                Welcome Back
+              </Text>
+              <Text className="text-center text-lg">
+                Enter your credential to login
+              </Text>
+            </View>
           </View>
           <FormField
             title="Email"
@@ -258,7 +262,7 @@ const SignIn = () => {
             handleChangeText={(e) => setForm({ ...form, email: e })}
             otherStyles="mt-7"
             keyBoardType="email-address"
-            placeholder="enter your email"
+            placeholder="Enter your email"
           />
 
           <FormField
@@ -266,18 +270,18 @@ const SignIn = () => {
             value={form.password}
             handleChangeText={(e) => setForm({ ...form, password: e })}
             otherStyles="mt-7"
-            placeholder="enter your password"
+            placeholder="Enter your password"
           />
 
           <CustomButton
-            title="Sign In"
+            title="Login"
             handlePress={Login}
-            containerStyles="mt-7 text-white"
+            containerStyles="mt-7 text-white bg-[#0b4dad]"
             isLoading={isLogin}
           />
 
           <View className="justify-center pt-5 flex-row gap-2">
-            <Text className="text-lg text-[#bfcddb] font-pregular">
+            <Text className="text-lg text-[#a1a1aa] font-pregular">
               Don't have an account?
             </Text>
             <Link

@@ -210,20 +210,20 @@ const PassoutRequest = () => {
             >
               <FontAwesome6 name="arrow-left" size={24} color="black" />
             </TouchableOpacity>
-            <Text className="text-2xl font-bold text-center ml-7">
+            <Text className="text-3xl font-bold text-center ml-5">
               Passout Request
             </Text>
           </View>
 
-          <Text className="mb-2 text-lg">Daparting Date</Text>
+          <Text className="text-lg text-black font-pmedium">Daparting Date</Text>
           <TouchableOpacity
             onPress={() => setOpenStartDatePicker(true)}
-            className="mb-8 w-full"
+            className="mb-8  shadow-md w-full h-[75px] px-4 bg-blue-100 bg-opacity-10 rounded-3xl items-center flex-row"
           >
             <TextInput
               value={formatDate(startDate)}
               editable={false}
-              className="border-2 border-[#42606b] w-full h-16 px-4 bg-white rounded-2xl text-black"
+              className=" w-full h-16 px-4  rounded-2xl text-[#6b7280] text-base"
             />
           </TouchableOpacity>
           <DateTimePickerModal
@@ -234,15 +234,15 @@ const PassoutRequest = () => {
             onCancel={hideStart}
           />
 
-          <Text className="mb-2 text-lg">Return Date</Text>
+          <Text className="text-lg text-black font-pmedium">Return Date</Text>
           <TouchableOpacity
             onPress={() => setOpenEndDatePicker(true)}
-            className="mb-8 w-full"
+            className="mb-8  shadow-md w-full h-[75px] px-4 bg-blue-100 bg-opacity-10 rounded-3xl items-center flex-row text-black"
           >
             <TextInput
               value={formatDate(endDate)}
               editable={false}
-              className="border-2 border-[#42606b] w-full h-16 px-4 bg-white rounded-2xl text-black"
+              className="w-full h-16 px-4 rounded-2xl text-[#6b7280] text-base"
             />
           </TouchableOpacity>
           <DateTimePickerModal
@@ -258,6 +258,7 @@ const PassoutRequest = () => {
             value={destination}
             handleChangeText={setDestination}
             otherStyles="mb-4"
+            placeholder="Enter your destination"
           />
 
           <FormField
@@ -273,9 +274,11 @@ const PassoutRequest = () => {
             type="phone"
             handleChangeText={setEmergencyContact}
             otherStyles="mb-4"
+            placeholder="Enter your emergency contact number"
           />
 
-          <CustomButton title="Submit Request" handlePress={handleSubmit} />
+          <CustomButton title="Submit Request" handlePress={handleSubmit}
+            containerStyles="w-full mt-7 bg-[#0b4dad] p-6" />
         </ScrollView>
       </SafeAreaView>
     );
@@ -284,30 +287,30 @@ const PassoutRequest = () => {
   // Family_Member form
   if (newUser.userType === "Family_Member") {
     return (
-      <SafeAreaView className="flex-1 bg-white p-4">
+      <SafeAreaView className="flex-1 bg-[#fafbfb] p-4">
         <ScrollView contentContainerStyle={{ alignItems: "left" }}>
-          <View className="absolute top-11 left-10">
+          <View className="flex-row items-center mb-6">
             <TouchableOpacity
               onPress={() => navigation.navigate("booking")}
-              className="mr-8"
+              className="absolute top-[20] left-5  rounded-full p-2"
             >
               <FontAwesome6 name="arrow-left" size={24} color="black" />
             </TouchableOpacity>
           </View>
-          <Text className="text-3xl font-bold text-center mt-10">
+          <Text className="text-3xl font-bold text-center ml-5">
             Booking Visit
           </Text>
 
           <View className="mt-20">
-            <Text className="mb-2 text-lg">Visit Date and Arrival Time</Text>
+            <Text className="mb-2 text-lg text-black font-pmedium">Visit Date and Arrival Time</Text>
             <TouchableOpacity
               onPress={() => setOpenVisitPicker(true)}
-              className="mb-8 w-full"
+              className="mb-4 w-full"
             >
               <TextInput
                 value={formatDate(form.Visit_Date)}
                 editable={false}
-                className="border-2 border-gray-500 w-full h-16 px-4 bg-white rounded-2xl text-black"
+                className="mb-8  shadow-md w-full h-[75px] px-4 bg-blue-100 bg-opacity-10 rounded-3xl items-center flex-row"
               />
             </TouchableOpacity>
             <DateTimePickerModal
@@ -329,6 +332,7 @@ const PassoutRequest = () => {
             <CustomButton
               title="Submit Booking"
               handlePress={handleSubmitVisit}
+              containerStyles="w-full mt-7 bg-[#0b4dad] p-6"
             />
           </View>
         </ScrollView>

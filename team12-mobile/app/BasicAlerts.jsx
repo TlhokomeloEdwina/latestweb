@@ -114,14 +114,14 @@ const BasicAlerts = () => {
       <View className="items-center justify-center mt-16">
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          className="absolute top-[-10] left-6 bg-[#bfcddb]rounded-full p-4"
+          className="absolute  left-6 bg-[#bfcddb]rounded-full p-4"
         >
           <FontAwesome name="arrow-left" size={30} />
         </TouchableOpacity>
-        <Text className="text-3xl font-bold">Basic Alerts</Text>
+        <Text className="text-4xl font-bold">Basic Alerts</Text>
       </View>
 
-      <View className="mt-28">
+      <View className="mt-20">
         <View className="flex-row justify-center flex-wrap mb-4 gap-5 my-auto">
           {alerts.slice(0, 2).map((alert, index) => (
             <AlertButtons key={index} alert={alert} sendAlert={sendAlert} />

@@ -25,7 +25,7 @@ const ResidentCard = ({ resident, onPress }) => {
           </Text>
         </View>
       )}
-      <Text className="ml-4 text-lg">
+      <Text className="ml-4 text-xl font-semibold">
         {resident.first_name} {resident.last_name}
       </Text>
     </TouchableOpacity>
